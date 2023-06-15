@@ -1,7 +1,7 @@
 package manager.gym.Gym.Manager.controller;
 
 import manager.gym.Gym.Manager.entity.Employee;
-import manager.gym.Gym.Manager.service.EmployeeServiceImpl;
+import manager.gym.Gym.Manager.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.util.List;
 //@RequestMapping("/api/v1/employee")
 public class EmployeeController {
     @Autowired
-    private EmployeeServiceImpl employeeService;
+    private EmployeeService employeeService;
     @GetMapping("/getAllEmployees")
     public ResponseEntity<List<Employee>> getAllEmployees(){
         return new ResponseEntity<List<Employee>>(employeeService.getAll(), HttpStatus.OK);

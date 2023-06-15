@@ -17,6 +17,9 @@ public class DBSecurity   {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer(){
         return (web) -> web.ignoring().anyRequest();
-
     }
+//    @Bean
+//    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+//        http.authorizeRequests((auth) -> auth.anyRequest().authenticated()).build();
+//    }
 }
