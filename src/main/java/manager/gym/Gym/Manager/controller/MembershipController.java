@@ -1,46 +1,44 @@
 package manager.gym.Gym.Manager.controller;
 
 import manager.gym.Gym.Manager.entity.Membership;
-import manager.gym.Gym.Manager.repository.MembershipRepository;
+import manager.gym.Gym.Manager.service.MembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/memberships")
+@RequestMapping("/api/memberships")
 public class MembershipController {
-    private final MembershipRepository membershipRepository;
+    private final MembershipService membershipService;
 
     @Autowired
-    public MembershipController(MembershipRepository membershipRepository) {
-        this.membershipRepository = membershipRepository;
+    public MembershipController(MembershipService membershipService) {
+        this.membershipService = membershipService;
     }
 
     @GetMapping
     public List<Membership> getAllMemberships() {
-        return membershipRepository.findAll();
+        return membershipService.getAllMemberships();
+    }
+
+    @GetMapping("/{membershipId}")
+    public Membership getMembershipById(@PathVariable Integer membershipId) {
+        return membershipService.getMembershipById(membershipId);
     }
 
     @PostMapping
     public Membership createMembership(@RequestBody Membership membership) {
-        return membershipRepository.save(membership);
+        return membershipService.createMembership(membership);
     }
 
-    @GetMapping("/{id}")
-    public Membership getMembershipById(@PathVariable Integer id) {
-        return membershipRepository.findById(id).orElse(null);
+    @PutMapping("/{membershipId}")
+    public Membership updateMembership(@PathVariable Integer membershipId, @RequestBody Membership membership) {
+        return membershipService.updateMembership(membershipId, membership);
     }
 
-    @PutMapping("/{id}")
-    public Membership updateMembership(@PathVariable Integer id, @RequestBody Membership membership) {
-        membership.setMembershipId(id);
-        return membershipRepository.save(membership);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteMembership(@PathVariable Integer id) {
-        membershipRepository.deleteById(id);
+    @DeleteMapping("/{membershipId}")
+    public void deleteMembership(@PathVariable Integer membershipId) {
+        membershipService.deleteMembership(membershipId);
     }
 }
-
