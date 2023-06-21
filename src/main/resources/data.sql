@@ -8,3 +8,19 @@ INSERT INTO EMPLOYEE(name,salary,address) VALUES('John Doe', 50000.00, '123 Main
                                                        ('Frank White', 80000.00, '369 Spruce St'),
                                                        ('Grace Green', 85000.00, '159 Willow St'),
                                                        ('Henry Blue', 90000.00, '753 Aspen St');
+
+INSERT INTO Membership(membership_name,
+ training_time,
+ price,
+ price_per_month,
+ price_per_day,
+ number_of_session,
+ training_card_type,
+ including_trainer,
+ training_class,
+ description)
+VALUES ('Membership 1', '12', 500.00, 100, 10, 20, 'Short-term', true, 'Class A', 'Membership 1 description'),
+       ('Membership 2', '24', 600.00, 120, 12, 30, 'Long-term', false, 'Class B', 'Membership 2 description'),
+       ('Membership 3', '36', 700.00, 150, 15, 40, 'Diamond', true, 'Class C', 'Membership 3 description'),
+       ('Membership 4', '48', 800.00, 180, 18, 50, 'Short-term', false, 'Class D', 'Membership 4 description'),
+       ('Membership 5', 'One day', 100.00, 0, 20, 10, 'Short-term', true, 'Class E', 'Membership 5 description');
