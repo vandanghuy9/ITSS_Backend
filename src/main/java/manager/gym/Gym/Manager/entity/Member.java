@@ -1,16 +1,16 @@
 package manager.gym.Gym.Manager.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
+@Table(name = "members")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Integer memberId;
     private String name;
     private Integer age;
@@ -21,6 +21,10 @@ public class Member {
     private LocalDateTime birthday;
     private String job;
     private String memberType;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<TrainingHistory> trainingHistories;
+
 
     // Constructors, getters, setters...
 
@@ -103,5 +107,13 @@ public class Member {
 
     public void setMemberType(String memberType) {
         this.memberType = memberType;
+    }
+
+    public List<TrainingHistory> getTrainingHistories() {
+        return trainingHistories;
+    }
+
+    public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
+        this.trainingHistories = trainingHistories;
     }
 }
