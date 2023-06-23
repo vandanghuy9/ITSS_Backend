@@ -34,3 +34,33 @@ VALUES ('John Doe', 30, 'Male', 'johndoe@example.com', '1234567890', 'Engineer',
        ('Dave Wilson', 27, 'Male', 'davewilson@example.com', '4444444444', 'Accountant', '1994-11-15', 'CPA', 'Classic'),
        ('Eve Black', 29, 'Female', 'eveblack@example.com', '6666666666', 'Artist', '1992-07-25', 'Painter', 'Diamond'),
        ('Frank White', 31, 'Male', 'frankwhite@example.com', '7777777777', 'Engineer', '1991-12-05', 'Mechanical Engineer', 'Classic');
+
+
+
+INSERT INTO Registration (registration_id, member_id, membership_id, registration_date, registration_type, trainer_id)
+VALUES
+  (1, 1, 1, '2023-06-01 09:00:00', 'monthly', 'T001'),
+  (2, 2, 2, '2023-06-05 14:30:00', 'hourly', NULL),
+  (3, 3, 1, '2023-06-15 18:45:00', 'monthly', 'T002'),
+  (4, 4, 2, '2023-06-02 11:15:00', 'hourly', 'T003'),
+  (5, 5, 1, '2023-06-10 16:30:00', 'monthly', NULL),
+  (6, 1, 2, '2023-06-12 13:45:00', 'hourly', 'T002'),
+  (7, 2, 1, '2023-06-18 17:30:00', 'monthly', 'T001'),
+  (8, 3, 2, '2023-06-07 10:00:00', 'hourly', NULL),
+  (9, 4, 1, '2023-06-20 15:15:00', 'monthly', 'T003'),
+  (10, 5, 2, '2023-06-25 19:45:00', 'hourly', 'T001');
+
+
+
+INSERT INTO Feedback (feedback_id, feedback_content, feedback_type, member_id, staff_id)
+VALUES
+  (1, 'Great session!', 0, 1, 1),
+  (2, 'The trainer was very knowledgeable.', 0, 2, 3),
+  (3, 'I enjoyed the workout.', 1, 3, 2),
+  (4, 'Need more variety in exercises.', 1, 4, 1),
+  (5, 'The staff was helpful.', 1, 2, 2),
+  (6, 'The trainer pushed me to my limits.', 0, 3, 3),
+  (7, 'I didn''t like the equipment.', 1, 1, 1),
+  (8, 'The trainer was late.', 0, 4, 2),
+  (9, 'I had a great experience overall.', 1, 5, 3),
+  (10, 'I didn''t receive any assistance.', 1, 3, 1);
