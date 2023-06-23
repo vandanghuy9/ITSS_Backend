@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class MembershipService {
+
     private final MembershipRepository membershipRepository;
 
     @Autowired
