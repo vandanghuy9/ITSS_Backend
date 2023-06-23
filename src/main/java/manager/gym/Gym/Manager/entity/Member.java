@@ -6,9 +6,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "members")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Integer memberId;
     private String name;
     private Integer age;
@@ -20,7 +22,7 @@ public class Member {
     private String job;
     private String memberType;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TrainingHistory> trainingHistories;
 
 

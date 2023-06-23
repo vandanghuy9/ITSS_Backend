@@ -1,19 +1,17 @@
 package manager.gym.Gym.Manager.entity;
 
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Entity
-
+@Table(name = "trainingHistories")
 public class TrainingHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
-    @Column(insertable = false, updatable = false)
-    private String memberId;
 
 
     private Date trainingDay;
@@ -25,14 +23,15 @@ public class TrainingHistory {
     private Integer trainerId;
 
     @ManyToOne
-    @JoinColumn(name = "memberId", referencedColumnName = "memberId", insertable = false, updatable = false)
+    @ToString.Exclude
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     public TrainingHistory() {
     }
 
-    public TrainingHistory(String memberId, Date trainingDay, String trainingTime, Integer trainerId) {
-        this.memberId = memberId;
+    public TrainingHistory( Date trainingDay, String trainingTime, Integer trainerId) {
+//        this.memberId = memberId;
         this.trainingDay = trainingDay;
         this.trainingTime = trainingTime;
         this.trainerId = trainerId;
@@ -47,13 +46,13 @@ public class TrainingHistory {
         this.id = id;
     }
 
-    public String getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
-    }
+//    public Integer getMemberId() {
+//        return memberId;
+//    }
+//
+//    public void setMemberId(Integer memberId) {
+//        this.memberId = memberId;
+//    }
 
     public Date getTrainingDay() {
         return trainingDay;
