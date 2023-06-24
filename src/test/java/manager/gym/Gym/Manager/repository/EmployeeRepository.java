@@ -1,6 +1,6 @@
 package manager.gym.Gym.Manager.repository;
 
-import manager.gym.Gym.Manager.entity.Employee;
+import manager.gym.Gym.Manager.entity.staff.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

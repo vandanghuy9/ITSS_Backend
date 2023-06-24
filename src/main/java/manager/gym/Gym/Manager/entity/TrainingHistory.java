@@ -6,7 +6,7 @@ import lombok.ToString;
 import java.util.Date;
 
 @Entity
-@Table(name = "trainingHistories")
+@Table(name = "TRAINING_HISTORY")
 public class TrainingHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
