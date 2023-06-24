@@ -30,12 +30,12 @@ public class TrainerController {
         return new ResponseEntity<String>(trainerService.save(trainer),HttpStatus.CREATED);
     }
 
-    @PutMapping("/trainer/update/{id}")
-    public  ResponseEntity<Integer> updateById(@PathVariable int id, @RequestBody Trainer trainer){
+    @PutMapping("/trainer/update")
+    public  ResponseEntity<Integer> updateById(@RequestParam int id, @RequestBody Trainer trainer){
         return new ResponseEntity<Integer>(trainerService.updateByID(id,trainer),HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/trainer/{id}")
+    @DeleteMapping("/trainer/delete")
     public ResponseEntity<Integer> deleteByID(@PathVariable int id){
         return new ResponseEntity<Integer>(trainerService.deleteByID(id), HttpStatus.OK);
     }

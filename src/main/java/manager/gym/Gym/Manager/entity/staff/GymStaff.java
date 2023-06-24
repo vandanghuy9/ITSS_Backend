@@ -30,9 +30,9 @@ public class GymStaff extends Employee{
     }
     private String role;
     private String workingFaculty;
-//    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+//    @OneToOne(mappedBy = "employee")
 //    private YogaClass yogaClass;
-
+//
 //    public YogaClass getYogaClass() {
 //        return yogaClass;
 //    }
@@ -65,7 +65,6 @@ public class GymStaff extends Employee{
     @Override
     public void setEmployee(Employee employee){
         GymStaff gymStaff = (GymStaff)employee;
-        this.setId(gymStaff.getId());
         this.setName(gymStaff.getName());
         this.setDob(gymStaff.getDob());
         this.setWorkingFaculty(gymStaff.getWorkingFaculty());

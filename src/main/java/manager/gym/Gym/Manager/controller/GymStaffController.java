@@ -34,13 +34,13 @@ public class GymStaffController {
         return new ResponseEntity<String>(gymStaffService.save(gymStaff), HttpStatus.OK);
     }
 
-    @PutMapping("/gymstaff/update/{id}")
-    public ResponseEntity<Integer> updateById(@PathVariable int id, @RequestBody GymStaff gymStaff) {
+    @PutMapping("/gymstaff/update")
+    public ResponseEntity<Integer> updateById(@RequestParam int id, @RequestBody GymStaff gymStaff) {
         return new ResponseEntity<Integer>(gymStaffService.updateByID(id, gymStaff), HttpStatus.OK);
     }
 
-    @DeleteMapping("/gymstaff/{id}")
-    public ResponseEntity<Integer> deleteByID(@PathVariable int id) {
+    @DeleteMapping("/gymstaff/delete")
+    public ResponseEntity<Integer> deleteByID(@RequestParam int id) {
         return new ResponseEntity<Integer>(gymStaffService.deleteByID(id), HttpStatus.OK);
     }
 

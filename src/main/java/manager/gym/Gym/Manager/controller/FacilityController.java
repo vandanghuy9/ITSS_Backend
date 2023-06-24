@@ -29,12 +29,12 @@ public class FacilityController  {
         return new ResponseEntity<String>(facilityService.save(facility),HttpStatus.OK);
     }
 
-    @PutMapping("/facility/update/{id}")
-    public ResponseEntity<Integer> updateById(@PathVariable int id, @RequestBody Facility facility){
+    @PutMapping("/facility/update")
+    public ResponseEntity<Integer> updateById(@RequestParam int id, @RequestBody Facility facility){
         return new ResponseEntity<Integer>(facilityService.updateByID(id,facility),HttpStatus.OK);
     }
 
-    @DeleteMapping("/facility/{id}")
+    @DeleteMapping("/facility/delete")
     public ResponseEntity<Integer> deleteByID(@PathVariable int id){
         return new ResponseEntity<Integer>(facilityService.deleteByID(id),HttpStatus.OK);
     }

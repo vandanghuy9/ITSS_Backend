@@ -9,7 +9,7 @@ INSERT INTO GYM_STAFF(name,phone_Num,address) VALUES('John Doe', '3749201836', '
                                                        ('Grace Green', '3847562910', '159 Willow St'),
                                                        ('Henry Blue', '8473920657', '753 Aspen St');
 
-INSERT INTO Membership(membership_name,
+INSERT INTO Memberships(membership_name,
  training_time,
  price,
  price_per_month,
@@ -25,7 +25,7 @@ VALUES ('Membership 1', '12', 500.00, 100, 10, 20, 'Short-term', true, 'Class A'
        ('Membership 4', '48', 800.00, 180, 18, 50, 'Short-term', false, 'Class D', 'Membership 4 description'),
        ('Membership 5', 'One day', 100.00, 0, 20, 10, 'Short-term', true, 'Class E', 'Membership 5 description');
 
-INSERT INTO Member(name, age, gender, email, phone_number, occupation, birthday, job, member_type)
+INSERT INTO Members(name, age, gender, email, phone_number, occupation, birthday, job, member_type)
 VALUES ('John Doe', 30, 'Male', 'johndoe@example.com', '1234567890', 'Engineer', '1990-01-01', 'Software Developer', 'Classic'),
        ('Jane Smith', 25, 'Female', 'janesmith@example.com', '9876543210', 'Designer', '1995-02-15', 'Graphic Designer', 'Diamond'),
        ('Bob Johnson', 35, 'Male', 'bobjohnson@example.com', '5555555555', 'Teacher', '1986-06-10', 'English Teacher', 'Classic'),

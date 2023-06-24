@@ -57,6 +57,10 @@ public class YogaClassService implements IYogaClassService {
 
     @Override
     public int deleteByID(int id) {
+        return 0;
+    }
+
+    public int deleteByID(String id){
         YogaClass foundYogaClass = getById(id).get(0);
         if (foundYogaClass != null){
             yogaClassRepository.delete(foundYogaClass);

@@ -16,7 +16,7 @@ public class YogaClass {
     @Id
     private String id;
     private String name;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
     private GymStaff employee;
     private int maximumNumber;

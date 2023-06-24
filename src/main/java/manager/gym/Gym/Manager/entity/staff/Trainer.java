@@ -47,5 +47,6 @@ public class Trainer extends Employee{
         this.setCitizenIdentityID(trainer.getCitizenIdentityID());
         this.setStartDate(trainer.getStartDate());
         this.setFinishContractDate(trainer.getFinishContractDate());
+        this.setTrainerType(trainer.getTrainerType());
     }
 }
