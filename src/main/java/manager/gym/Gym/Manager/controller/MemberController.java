@@ -3,6 +3,7 @@ package manager.gym.Gym.Manager.controller;
 import manager.gym.Gym.Manager.entity.Member;
 import manager.gym.Gym.Manager.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class MemberController {
     }
 
     @GetMapping
-    public List<Member> getAllMembers(){
+    public ResponseEntity<List<Member>> getAllMembers(){
             return memberService.getAllMembers()
                     ;
     }

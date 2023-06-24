@@ -21,17 +21,17 @@ public class TrainingHistory {
 
 
     private Integer trainerId;
+    private Integer memberId;
 
-    @ManyToOne
-    @ToString.Exclude
-    @JoinColumn(name = "member_id", nullable = false)
-    private Member member;
+//    @ManyToOne
+//    @JoinColumn(name = "member_id",nullable = false)
+//    private Member member;
 
     public TrainingHistory() {
     }
 
-    public TrainingHistory( Date trainingDay, String trainingTime, Integer trainerId) {
-//        this.memberId = memberId;
+    public TrainingHistory(Integer memberId, Date trainingDay, String trainingTime, Integer trainerId) {
+          this.memberId = memberId;
         this.trainingDay = trainingDay;
         this.trainingTime = trainingTime;
         this.trainerId = trainerId;
@@ -46,13 +46,13 @@ public class TrainingHistory {
         this.id = id;
     }
 
-//    public Integer getMemberId() {
-//        return memberId;
-//    }
-//
-//    public void setMemberId(Integer memberId) {
-//        this.memberId = memberId;
-//    }
+    public Integer getMemberId() {
+        return memberId;
+    }
+
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
+    }
 
     public Date getTrainingDay() {
         return trainingDay;
@@ -78,12 +78,12 @@ public class TrainingHistory {
         this.trainerId = trainerId;
     }
 
-    public Member getMember() {
-        return member;
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
-    }
+//    public Member getMember() {
+//        return member;
+//    }
+//
+//    public void setMember(Member member) {
+//        this.member = member;
+//    }
 
 }

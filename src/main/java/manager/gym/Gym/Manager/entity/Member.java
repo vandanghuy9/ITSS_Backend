@@ -22,8 +22,8 @@ public class Member {
     private String job;
     private String memberType;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TrainingHistory> trainingHistories;
+//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
+//    private List<TrainingHistory> trainingHistories;
 
 
     // Constructors, getters, setters...
@@ -109,11 +109,11 @@ public class Member {
         this.memberType = memberType;
     }
 
-    public List<TrainingHistory> getTrainingHistories() {
-        return trainingHistories;
-    }
-
-    public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
-        this.trainingHistories = trainingHistories;
-    }
+//    public List<TrainingHistory> getTrainingHistories() {
+//        return trainingHistories;
+//    }
+//
+//    public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
+//        this.trainingHistories = trainingHistories;
+//    }
 }
