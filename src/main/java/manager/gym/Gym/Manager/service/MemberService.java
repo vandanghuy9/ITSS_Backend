@@ -4,6 +4,8 @@ package manager.gym.Gym.Manager.service;
 import manager.gym.Gym.Manager.entity.Member;
 import manager.gym.Gym.Manager.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,8 +20,13 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public List<Member> getAllMembers() {
-        return memberRepository.findAll();
+    public ResponseEntity<List<Member>> getAllMembers() {
+        List<Member> members = memberRepository.findAll();
+
+        if (members.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(members, HttpStatus.OK);
     }
 
     public Member getMemberById(Integer memberId) {
