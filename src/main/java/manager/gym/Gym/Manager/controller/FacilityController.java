@@ -26,7 +26,7 @@ public class FacilityController  {
 
     @PostMapping("/facility/add")
     public ResponseEntity<String> saveFacility(@RequestBody Facility facility){
-        return new ResponseEntity<String>(facilityService.save(facility),HttpStatus.OK);
+        return new ResponseEntity<String>(facilityService.save(facility),HttpStatus.CREATED);
     }
 
     @PutMapping("/facility/update")
