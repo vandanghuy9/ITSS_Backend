@@ -35,7 +35,7 @@ public class FacilityController  {
     }
 
     @DeleteMapping("/facility/delete")
-    public ResponseEntity<Integer> deleteByID(@PathVariable int id){
+    public ResponseEntity<Integer> deleteByID(@RequestParam(name = "id") int id){
         return new ResponseEntity<Integer>(facilityService.deleteByID(id),HttpStatus.OK);
     }
 }
