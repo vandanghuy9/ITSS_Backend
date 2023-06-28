@@ -49,18 +49,18 @@ VALUES
     (5, '2022-01-10', '10:30', NULL);
 
 
-INSERT INTO Registration (registration_id, member_id, membership_id, registration_date, registration_type, trainer_id)
-VALUES
-  (1, 1, 1, '2023-06-01 09:00:00', 'monthly', 'T001'),
-  (2, 2, 2, '2023-06-05 14:30:00', 'hourly', NULL),
-  (3, 3, 1, '2023-06-15 18:45:00', 'monthly', 'T002'),
-  (4, 4, 2, '2023-06-02 11:15:00', 'hourly', 'T003'),
-  (5, 5, 1, '2023-06-10 16:30:00', 'monthly', NULL),
-  (6, 1, 2, '2023-06-12 13:45:00', 'hourly', 'T002'),
-  (7, 2, 1, '2023-06-18 17:30:00', 'monthly', 'T001'),
-  (8, 3, 2, '2023-06-07 10:00:00', 'hourly', NULL),
-  (9, 4, 1, '2023-06-20 15:15:00', 'monthly', 'T003'),
-  (10, 5, 2, '2023-06-25 19:45:00', 'hourly', 'T001');
+--INSERT INTO Registration (registration_id, member_id, membership_id, registration_date, registration_type, trainer_id)
+--VALUES
+--  (1, 1, 1, '2023-06-01 09:00:00', 'monthly', 'T001'),
+--  (2, 2, 2, '2023-06-05 14:30:00', 'hourly', NULL),
+--  (3, 3, 1, '2023-06-15 18:45:00', 'monthly', 'T002'),
+--  (4, 4, 2, '2023-06-02 11:15:00', 'hourly', 'T003'),
+--  (5, 5, 1, '2023-06-10 16:30:00', 'monthly', NULL),
+--  (6, 1, 2, '2023-06-12 13:45:00', 'hourly', 'T002'),
+--  (7, 2, 1, '2023-06-18 17:30:00', 'monthly', 'T001'),
+--  (8, 3, 2, '2023-06-07 10:00:00', 'hourly', NULL),
+--  (9, 4, 1, '2023-06-20 15:15:00', 'monthly', 'T003'),
+--  (10, 5, 2, '2023-06-25 19:45:00', 'hourly', 'T001');
 
 
 

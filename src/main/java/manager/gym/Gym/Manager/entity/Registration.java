@@ -2,7 +2,9 @@ package manager.gym.Gym.Manager.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
+import manager.gym.Gym.Manager.entity.staff.Trainer;
 import org.hibernate.Internal;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 
 import java.util.Date;
 
@@ -12,22 +14,28 @@ public class Registration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer registrationId;
 
-    private Integer memberId;
-    private Integer membershipId;
+    @OneToOne
+    @JoinColumn(name = "member_id", referencedColumnName = "member_id")
+    private Member memberId;
+    @OneToOne
+    @JoinColumn(name = "membership_id", referencedColumnName = "membershipId")
+    private Membership membershipId;
     private Date registrationDate;
     private String registrationType;
-    private String trainerId;
+    @OneToOne
+    @JoinColumn(name = "trainer_id", referencedColumnName = "id")
+    private Trainer trainerId;
 
     public Registration(){
 
     }
-    public Registration(Integer registrationId, Integer memberId, Integer membershipId, Date registrationDate, String registrationType, String trainerId) {
+    public Registration(Integer registrationId, Date registrationDate, String registrationType) {
         this.registrationId = registrationId;
-        this.memberId = memberId;
-        this.membershipId = membershipId;
+//        this.memberId = memberId;
+//        this.membershipId = membershipId;
         this.registrationDate = registrationDate;
         this.registrationType = registrationType;
-        this.trainerId = trainerId;
+//        this.trainerId = trainerId;
     }
 
     public Integer getRegistrationId() {
@@ -38,19 +46,19 @@ public class Registration {
         this.registrationId = registrationId;
     }
 
-    public Integer getMemberId() {
+    public Member getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(Integer memberId) {
+    public void setMemberId(Member memberId) {
         this.memberId = memberId;
     }
 
-    public Integer getMembershipId() {
+    public Membership getMembershipId() {
         return membershipId;
     }
 
-    public void setMembershipId(Integer membershipId) {
+    public void setMembershipId(Membership membershipId) {
         this.membershipId = membershipId;
     }
 
@@ -70,11 +78,11 @@ public class Registration {
         this.registrationType = registrationType;
     }
 
-    public String getTrainerId() {
+    public Trainer getTrainerId() {
         return trainerId;
     }
 
-    public void setTrainerId(String trainerId) {
+    public void setTrainerId(Trainer trainerId) {
         this.trainerId = trainerId;
     }
 
