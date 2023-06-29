@@ -9,20 +9,21 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 import java.util.Date;
 
 @Entity
+@Table(name = "registration")
 public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer registrationId;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "member_id")
     private Member memberId;
-    @OneToOne
-    @JoinColumn(name = "membership_id", referencedColumnName = "membershipId")
+    @ManyToOne
+    @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
     private Membership membershipId;
     private Date registrationDate;
     private String registrationType;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "trainer_id", referencedColumnName = "id")
     private Trainer trainerId;
 
