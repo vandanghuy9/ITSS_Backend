@@ -1,23 +1,30 @@
 package manager.gym.Gym.Manager.service;
 
 import manager.gym.Gym.Manager.entity.Feedback;
-import manager.gym.Gym.Manager.entity.Registration;
+import manager.gym.Gym.Manager.entity.Member;
+import manager.gym.Gym.Manager.entity.staff.GymStaff;
 import manager.gym.Gym.Manager.repository.FeedbackRepository;
-import manager.gym.Gym.Manager.repository.RegistrationRepository;
+import manager.gym.Gym.Manager.repository.GymStaffRepository;
+import manager.gym.Gym.Manager.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FeedbackService {
+    @Autowired
     private final FeedbackRepository feedbackRepository;
+    @Autowired
+    private MemberRepository memberRepository;
+    @Autowired
+    private GymStaffRepository gymStaffRepository;
 
     @Autowired
-    public FeedbackService(FeedbackRepository feedbackRepository){
+    public FeedbackService(FeedbackRepository feedbackRepository) {
         this.feedbackRepository = feedbackRepository;
     }
+
 
     public List<Feedback> getAllFeedbacks(){
         return feedbackRepository.findAll();
@@ -29,6 +36,14 @@ public class FeedbackService {
     }
 
     public Feedback createFeedback(Feedback feedback){
+        int memberId = feedback.getMemberId().getMemberId();
+        int gymStaffId = feedback.getGymStaffId().getId();
+
+        Member foundMember = memberRepository.findById(memberId).orElse(null);
+        GymStaff foundGymStaff = gymStaffRepository.findByid(gymStaffId).get(0);
+
+        feedback.setMemberId(foundMember);
+        feedback.setGymStaffId(foundGymStaff);
         return feedbackRepository.save(feedback);
     }
 
@@ -40,6 +55,4 @@ public class FeedbackService {
         feedback.setFeedbackId(feedbackId);
         return feedbackRepository.save(feedback);
     }
-
-
 }
