@@ -3,25 +3,22 @@ package manager.gym.Gym.Manager.controller;
 import manager.gym.Gym.Manager.entity.Feedback;
 import manager.gym.Gym.Manager.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-
+@RequestMapping("/api/feedback")
 @RestController
-@RequestMapping("/api/feedbacks")
 public class FeedbackController {
+    @Autowired
     private final FeedbackService feedbackService;
 
-    @Autowired
     public FeedbackController(FeedbackService feedbackService) {
         this.feedbackService = feedbackService;
     }
 
     @GetMapping
-    public List<Feedback> getAllRegistrations(){
+    public List<Feedback> getAllFeedbacks(){
         return feedbackService.getAllFeedbacks();
     }
 
@@ -36,7 +33,7 @@ public class FeedbackController {
     }
 
     @DeleteMapping("/{feedbackId}")
-    public void deleteFeedbackById(@PathVariable Integer feedbackId){
+    public void deleteFeedback(@PathVariable Integer feedbackId){
         feedbackService.deleteFeedback(feedbackId);
     }
 
@@ -44,5 +41,4 @@ public class FeedbackController {
     public Feedback updateFeedback(@PathVariable Integer feedbackId, @RequestBody Feedback feedback){
         return feedbackService.updateFeedback(feedbackId, feedback);
     }
-
 }
