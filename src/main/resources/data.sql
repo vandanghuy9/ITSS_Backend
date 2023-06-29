@@ -73,3 +73,10 @@ VALUES
   (8, 3, 2, '2023-06-07 10:00:00', 'hourly', 2),
   (9, 4, 1, '2023-06-20 15:15:00', 'monthly', 1),
   (10, 5, 2, '2023-06-25 19:45:00', 'hourly', 9);
+
+INSERT INTO Users(username ,password,role)
+ VALUES
+     ('admin','123456','admin'),
+     ('staff','123456','staff'),
+     ('trainer','123456','trainer'),
+     ('member','123456','member');
