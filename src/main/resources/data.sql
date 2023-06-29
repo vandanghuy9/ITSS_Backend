@@ -76,3 +76,10 @@ VALUES
   (8, 'The trainer was late.', 0, 4, 2),
   (9, 'I had a great experience overall.', 1, 5, 3),
   (10, 'I didn''t receive any assistance.', 1, 3, 1);
+
+INSERT INTO Users(username ,password,role)
+ VALUES
+     ('admin','123456','admin'),
+     ('staff','123456','staff'),
+     ('trainer','123456','trainer'),
+     ('member','123456','member');
