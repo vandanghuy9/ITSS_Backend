@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "membership_id")
     private Integer membershipId;
     private String membershipName;
     private String trainingTime;
