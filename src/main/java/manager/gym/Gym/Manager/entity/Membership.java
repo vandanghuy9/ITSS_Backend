@@ -1,16 +1,15 @@
 package manager.gym.Gym.Manager.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "memberships")
 public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "membership_id")
     private Integer membershipId;
     private String membershipName;
     private String trainingTime;

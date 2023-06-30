@@ -5,9 +5,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-public interface IFacilityService {
-    List<Facility> getAll();
-    List<Facility> getFacilityById(@PathVariable int id);
-    String save(Facility facility);
+public interface IFacilityService extends IService<Facility> {
 
 }

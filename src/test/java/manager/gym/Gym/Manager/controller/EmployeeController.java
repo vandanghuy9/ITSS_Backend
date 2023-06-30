@@ -1,7 +1,6 @@
 package manager.gym.Gym.Manager.controller;
 
-import manager.gym.Gym.Manager.entity.Employee;
-import manager.gym.Gym.Manager.service.EmployeeService;
+import manager.gym.Gym.Manager.entity.staff.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
