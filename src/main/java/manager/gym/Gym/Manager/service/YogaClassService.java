@@ -21,10 +21,10 @@ public class YogaClassService implements IYogaClassService {
         return null;
     }
 
-
     public List<YogaClass> getById(String id) {
         return yogaClassRepository.findClassById(id);
     }
+
 
     @Override
     public String save(YogaClass yogaClass) {
