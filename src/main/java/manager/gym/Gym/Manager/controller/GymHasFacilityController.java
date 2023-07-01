@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/gymhasfacility")
+@CrossOrigin(origins = "http://localhost:8080")
 public class GymHasFacilityController {
     @Autowired
     private final GymHasFacilityService gymHasFacilityService;
