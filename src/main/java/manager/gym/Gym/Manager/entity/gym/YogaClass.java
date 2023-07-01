@@ -14,6 +14,7 @@ import manager.gym.Gym.Manager.entity.staff.GymStaff;
 
 public class YogaClass {
     @Id
+    @Column(name = "id")
     private String id;
     private String name;
     @OneToOne

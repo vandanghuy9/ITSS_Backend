@@ -48,38 +48,6 @@ VALUES
     (5, '2022-01-09', '13:30', 5),
     (5, '2022-01-10', '10:30', NULL);
 
-INSERT INTO Trainer (id, address, citizen_identityid, dob, finish_contract_date, name, phone_num, start_date, trainer_type) VALUES
-(1, '123 ABC Street, XYZ City', '123456789', '1990-01-01', '2023-12-31', 'John Doe', '987654321', '2021-01-01', 'PT gym'),
-(2, '456 DEF Street, XYZ City', '987654321', '1992-03-15', '2023-12-31', 'Jane Smith', '123456789', '2021-01-01', 'PT gym'),
-(3, '789 GHI Street, XYZ City', '456789123', '1985-07-20', '2023-12-31', 'Michael Johnson', '543216789', '2021-01-01', 'Giáo viên yoga'),
-(4, '321 JKL Street, XYZ City', '789123456', '1993-12-05', '2023-12-31', 'Emily Davis', '987654321', '2021-01-01', 'PT gym'),
-(5, '654 MNO Street, XYZ City', '321654987', '1988-09-10', '2023-12-31', 'Samantha Wilson', '123456789', '2021-01-01', 'Giáo viên Arobic'),
-(6, '987 PQR Street, XYZ City', '654987321', '1991-06-25', '2023-12-31', 'David Thompson', '543216789', '2021-01-01', 'Giáo viên Arobic'),
-(7, '321 STU Street, XYZ City', '987321654', '1987-04-12', '2023-12-31', 'Amanda Lee', '987654321', '2021-01-01', 'PT gym'),
-(8, '456 VWX Street, XYZ City', '654321987', '1994-08-03', '2023-12-31', 'Daniel Anderson', '123456789', '2021-01-01', 'Giáo viên Arobic'),
-(9, '789 YZA Street, XYZ City', '321987654', '1986-11-18', '2023-12-31', 'Sophia Moore', '543216789', '2021-01-01', 'Giáo viên yoga'),
-(10, '987 BCD Street, XYZ City', '987654321', '1995-02-28', '2023-12-31', 'William Clark', '987654321', '2021-01-01', 'PT gym');
-
-
-INSERT INTO Registration (registration_id, member_id, membership_id, registration_date, registration_type, trainer_id)
-VALUES
-  (1, 1, 1, '2023-06-01 09:00:00', 'monthly', 2),
-  (2, 2, 2, '2023-06-05 14:30:00', 'hourly', 1),
-  (3, 3, 1, '2023-06-15 18:45:00', 'monthly', 5),
-  (4, 4, 2, '2023-06-02 11:15:00', 'hourly', 7),
-  (5, 5, 1, '2023-06-10 16:30:00', 'monthly', 4),
-  (6, 1, 2, '2023-06-12 13:45:00', 'hourly', 8),
-  (7, 2, 1, '2023-06-18 17:30:00', 'monthly', 3),
-  (8, 3, 2, '2023-06-07 10:00:00', 'hourly', 2),
-  (9, 4, 1, '2023-06-20 15:15:00', 'monthly', 1),
-  (10, 5, 2, '2023-06-25 19:45:00', 'hourly', 9);
-
-INSERT INTO Users(username ,password,role)
- VALUES
-     ('admin','123456','admin'),
-     ('staff','123456','staff'),
-     ('trainer','123456','trainer'),
-     ('member','123456','member');
 INSERT INTO facility (facility_Name, type, date_Of_Purchase, warranty_Date, origin,status)
 VALUES
   ('Bowflex SelectTech 552 Dumbbell', 'Dumbbell', '2022-06-01', '2023-06-01', 'USA','new'),
@@ -121,5 +89,51 @@ VALUES
           ('CAP Barbell Cast Iron Kettlebell','Kettlebell','2022-6-4','2023-6-4','USA','new'),
           ('Kettle Gryp Portable Kettlebell Adapter for Dumbbells','Kettlebell','2022-6-4','2023-6-4','USA','new')
 ;
+
+INSERT INTO Trainer (id, address, citizen_identityid, dob, finish_contract_date, name, phone_num, start_date, trainer_type) VALUES
+(1, '123 ABC Street, XYZ City', '123456789', '1990-01-01', '2023-12-31', 'John Doe', '987654321', '2021-01-01', 'PT gym'),
+(2, '456 DEF Street, XYZ City', '987654321', '1992-03-15', '2023-12-31', 'Jane Smith', '123456789', '2021-01-01', 'PT gym'),
+(3, '789 GHI Street, XYZ City', '456789123', '1985-07-20', '2023-12-31', 'Michael Johnson', '543216789', '2021-01-01', 'Giáo viên yoga'),
+(4, '321 JKL Street, XYZ City', '789123456', '1993-12-05', '2023-12-31', 'Emily Davis', '987654321', '2021-01-01', 'PT gym'),
+(5, '654 MNO Street, XYZ City', '321654987', '1988-09-10', '2023-12-31', 'Samantha Wilson', '123456789', '2021-01-01', 'Giáo viên Arobic'),
+(6, '987 PQR Street, XYZ City', '654987321', '1991-06-25', '2023-12-31', 'David Thompson', '543216789', '2021-01-01', 'Giáo viên Arobic'),
+(7, '321 STU Street, XYZ City', '987321654', '1987-04-12', '2023-12-31', 'Amanda Lee', '987654321', '2021-01-01', 'PT gym'),
+(8, '456 VWX Street, XYZ City', '654321987', '1994-08-03', '2023-12-31', 'Daniel Anderson', '123456789', '2021-01-01', 'Giáo viên Arobic'),
+(9, '789 YZA Street, XYZ City', '321987654', '1986-11-18', '2023-12-31', 'Sophia Moore', '543216789', '2021-01-01', 'Giáo viên yoga'),
+(10, '987 BCD Street, XYZ City', '987654321', '1995-02-28', '2023-12-31', 'William Clark', '987654321', '2021-01-01', 'PT gym');
+
+
+INSERT INTO Registration (registration_id, member_id, membership_id, registration_date, registration_type, trainer_id)
+VALUES
+  (1, 1, 1, '2023-06-01 09:00:00', 'monthly', 2),
+  (2, 2, 2, '2023-06-05 14:30:00', 'hourly', 1),
+  (3, 3, 1, '2023-06-15 18:45:00', 'monthly', 5),
+  (4, 4, 2, '2023-06-02 11:15:00', 'hourly', 7),
+  (5, 5, 1, '2023-06-10 16:30:00', 'monthly', 4),
+  (6, 1, 2, '2023-06-12 13:45:00', 'hourly', 8),
+  (7, 2, 1, '2023-06-18 17:30:00', 'monthly', 3),
+  (8, 3, 2, '2023-06-07 10:00:00', 'hourly', 2),
+  (9, 4, 1, '2023-06-20 15:15:00', 'monthly', 1),
+  (10, 5, 2, '2023-06-25 19:45:00', 'hourly', 9);
+
+INSERT INTO Users(username ,password,role)
+ VALUES
+     ('admin','123456','admin'),
+     ('staff','123456','staff'),
+     ('trainer','123456','trainer'),
+     ('member','123456','member');
+
+INSERT INTO Feedback (feedback_id, feedback_content, feedback_type, member_id, staff_id)
+VALUES
+  (1, 'Great session!', 0, 1, 1),
+  (2, 'The trainer was very knowledgeable.', 0, 2, 3),
+  (3, 'I enjoyed the workout.', 1, 3, 2),
+  (4, 'Need more variety in exercises.', 1, 4, 1),
+  (5, 'The staff was helpful.', 1, 2, 2),
+  (6, 'The trainer pushed me to my limits.', 0, 3, 3),
+  (7, 'I didn''t like the equipment.', 1, 1, 1),
+  (8, 'The trainer was late.', 0, 4, 2),
+  (9, 'I had a great experience overall.', 1, 5, 3),
+  (10, 'I didn''t receive any assistance.', 1, 3, 1);
 
 
