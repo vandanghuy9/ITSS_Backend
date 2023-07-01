@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -26,6 +29,19 @@ public class GymManagerApplication implements CommandLineRunner {
 		this.memberRepository = memberRepository;
 		this.trainingHistoryRepository = trainingHistoryRepository;
 	}
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedOrigins("http://localhost:3000")
+						.allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD", "PATCH")
+						.allowCredentials(true);
+			}
+		};
+	}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(GymManagerApplication.class, args);
