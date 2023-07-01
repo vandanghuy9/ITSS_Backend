@@ -37,13 +37,13 @@ public class FeedbackService {
 
     public Feedback createFeedback(Feedback feedback){
         int memberId = feedback.getMemberId().getMemberId();
-        int gymStaffId = feedback.getGymStaffId().getId();
+//        int gymStaffId = feedback.getGymStaffId().getId();
 
         Member foundMember = memberRepository.findById(memberId).orElse(null);
-        GymStaff foundGymStaff = gymStaffRepository.findByid(gymStaffId).get(0);
+//        GymStaff foundGymStaff = gymStaffRepository.findByid(gymStaffId).get(0);
 
         feedback.setMemberId(foundMember);
-        feedback.setGymStaffId(foundGymStaff);
+//        feedback.setGymStaffId(foundGymStaff);
         return feedbackRepository.save(feedback);
     }
 
