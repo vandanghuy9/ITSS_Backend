@@ -123,17 +123,16 @@ INSERT INTO Users(username ,password,role)
      ('trainer','123456','trainer'),
      ('member','123456','member');
 
-INSERT INTO Feedback (feedback_id, feedback_content, feedback_type, member_id, staff_id)
+INSERT INTO Feedback (feedback_content, feedback_type, member_id, staff_id)
 VALUES
-  (1, 'Great session!', 0, 1, 1),
-  (2, 'The trainer was very knowledgeable.', 0, 2, 3),
-  (3, 'I enjoyed the workout.', 1, 3, 2),
-  (4, 'Need more variety in exercises.', 1, 4, 1),
-  (5, 'The staff was helpful.', 1, 2, 2),
-  (6, 'The trainer pushed me to my limits.', 0, 3, 3),
-  (7, 'I didn''t like the equipment.', 1, 1, 1),
-  (8, 'The trainer was late.', 0, 4, 2),
-  (9, 'I had a great experience overall.', 1, 5, 3),
-  (10, 'I didn''t receive any assistance.', 1, 3, 1);
-
+  ('Great session!', 0, 1, 1),
+  ('The trainer was very knowledgeable.', 0, 2, 3),
+  ('I enjoyed the workout.', 1, 3, 2),
+  ('Need more variety in exercises.', 1, 4, 1),
+  ('The staff was helpful.', 1, 2, 2),
+  ('The trainer pushed me to my limits.', 0, 3, 3),
+  ('I didn''t like the equipment.', 1, 1, 1),
+  ('The trainer was late.', 0, 4, 2),
+  ('I had a great experience overall.', 1, 5, 3),
+  ('I didn''t receive any assistance.', 1, 3, 1);
 
