@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/memberships")
+@CrossOrigin(origins = "http://localhost:8080")
 public class MembershipController {
     private final MembershipService membershipService;
 

@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController()
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:8080")
 public class TrainerController {
     @Autowired
     private TrainerService trainerService;

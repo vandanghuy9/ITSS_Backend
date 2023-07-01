@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/trainingHistories")
+@CrossOrigin(origins = "http://localhost:8080")
 public class TrainingHistoryController {
     private final TrainingHistoryService trainingHistoryService;
 
