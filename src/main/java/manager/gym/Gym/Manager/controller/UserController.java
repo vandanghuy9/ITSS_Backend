@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:8080")
@@ -24,22 +27,28 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody User user) {
+    public ResponseEntity<Map<String, Object>> loginUser(@RequestBody User user) {
         String username = user.getUsername();
         String password = user.getPassword();
 
-        // Kiểm tra thông tin đăng nhập
+
         User existingUser = userService.findByUsername(username);
         if (existingUser == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "Invalid username"));
         }
 
         if (!existingUser.getPassword().equals(password)) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid password");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Collections.singletonMap("error", "Invalid password"));
         }
 
-        // Đăng nhập thành công
-        return ResponseEntity.ok(existingUser.getRole());
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("role", existingUser.getRole());
+        response.put("id", existingUser.getId());
+
+
+        return ResponseEntity.ok(response);
     }
+
 
 }
