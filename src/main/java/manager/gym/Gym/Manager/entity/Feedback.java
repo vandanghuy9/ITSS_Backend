@@ -13,9 +13,9 @@ public class Feedback {
     @JoinColumn(name = "member_id", referencedColumnName = "member_id")
     private Member memberId;
 
-    @ManyToOne
-    @JoinColumn(name = "staff_id", referencedColumnName = "id")
-    private GymStaff gymStaffId;
+//    @ManyToOne
+//    @JoinColumn(name = "staff_id", referencedColumnName = "id")
+//    private GymStaff gymStaffId;
 
     @Column(name = "feedback_content")
     private String feedback_content;
@@ -23,10 +23,10 @@ public class Feedback {
     @Column(name = "feedback_type")
     private Integer feedback_type;
 
-    public Feedback(Integer feedbackId, Member memberId, GymStaff gymStaffId, String feedback_content, Integer feedback_type) {
+    public Feedback(Integer feedbackId, Member memberId, String feedback_content, Integer feedback_type) {
         this.feedbackId = feedbackId;
         this.memberId = memberId;
-        this.gymStaffId = gymStaffId;
+//        this.gymStaffId = gymStaffId;
         this.feedback_content = feedback_content;
         this.feedback_type = feedback_type;
     }
@@ -49,14 +49,6 @@ public class Feedback {
 
     public void setMemberId(Member memberId) {
         this.memberId = memberId;
-    }
-
-    public GymStaff getGymStaffId() {
-        return gymStaffId;
-    }
-
-    public void setGymStaffId(GymStaff gymStaffId) {
-        this.gymStaffId = gymStaffId;
     }
 
     public String getFeedback_content() {
