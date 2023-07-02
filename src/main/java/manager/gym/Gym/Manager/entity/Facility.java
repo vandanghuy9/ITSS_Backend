@@ -16,6 +16,7 @@ import java.util.Date;
 @NoArgsConstructor // constructor using no field as para
 
 public class Facility {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,6 +25,7 @@ public class Facility {
     private Date dateOfPurchase;
     private Date warrantyDate;
     private String origin;
+    private int quantity;
 
     public int getId() {
         return this.id;
@@ -83,7 +85,7 @@ public class Facility {
 
     private String status;
     public Facility(String facilityName, String type, Date dateOfPurchase,
-                    Date warrantyDate, String origin, String status){
+                    Date warrantyDate, String origin, String status,int quantity){
         super();
         this.facilityName = facilityName;
         this.type = type;
@@ -91,6 +93,7 @@ public class Facility {
         this.warrantyDate = warrantyDate;
         this.origin = origin;
         this.status = status;
+        this.quantity = quantity;
     }
 
     public void setFacility(Facility facility){
@@ -100,5 +103,13 @@ public class Facility {
         this.setWarrantyDate(facility.getWarrantyDate());
         this.setOrigin(facility.getOrigin());
         this.setStatus(facility.getStatus());
+        this.setQuantity(facility.getQuantity());
+    }
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
