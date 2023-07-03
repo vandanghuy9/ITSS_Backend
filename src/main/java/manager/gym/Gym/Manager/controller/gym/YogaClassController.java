@@ -45,4 +45,12 @@ public class YogaClassController {
         return new ResponseEntity<Integer>(yogaClassService.deleteByID(id),HttpStatus.OK);
     }
 
+    @PutMapping("/yogaclass/updateclass/{id}")
+    public  ResponseEntity<Integer> updateClass(@RequestBody YogaClass yogaClass, @PathVariable String id){
+        GymStaff foundGymStaff = gymStaffService.getById(yogaClass.getEmployee().getId()).get(0);
+        if (foundGymStaff != null){
+            yogaClass.setEmployee(foundGymStaff);
+        }
+        return new ResponseEntity<Integer>(yogaClassService.updateByID(id,yogaClass),HttpStatus.OK);
+    }
 }

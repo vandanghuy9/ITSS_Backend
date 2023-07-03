@@ -35,6 +35,7 @@ public class YogaClassService implements IYogaClassService {
     @Override
     public int updateByID(int id, YogaClass yogaClass) {
         YogaClass foundYogaClass = getById(id).get(0);
+        System.out.println(yogaClass.getName());
         if (foundYogaClass != null){
             foundYogaClass.setClass(yogaClass);
             YogaClass updated = yogaClassRepository.save(foundYogaClass);
@@ -46,11 +47,20 @@ public class YogaClassService implements IYogaClassService {
 
 
     public int updateMaximumNumberByID(String id, int maximumNumber) {
-        YogaClass foundYogaClass = getById(id).get(0);
+        YogaClass foundYogaClass = yogaClassRepository.findClassById(id).get(0);
         if (foundYogaClass != null){
             foundYogaClass.setMaximumNumber(maximumNumber);
             YogaClass updated = yogaClassRepository.save(foundYogaClass);
             return 1;
+        }
+        return 0;
+    }
+    public int updateByID(String id, YogaClass yogaClass) {
+        YogaClass foundYogaClass = yogaClassRepository.findClassById(id).get(0);
+        if (foundYogaClass != null){
+            foundYogaClass.setClass(yogaClass);
+            YogaClass updated = yogaClassRepository.save(foundYogaClass);
+            return updated.getEmployee().getId();
         }
         return 0;
     }
@@ -68,4 +78,5 @@ public class YogaClassService implements IYogaClassService {
         }
         return 0;
     }
+
 }

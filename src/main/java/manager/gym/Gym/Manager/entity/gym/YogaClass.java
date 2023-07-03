@@ -84,7 +84,7 @@ public class YogaClass {
     public void setClass(YogaClass yogaClass){
         setMaximumNumber(yogaClass.getMaximumNumber());
         setName(yogaClass.getName());
-//        setEmployee(yogaClass.getEmployee());
+        setEmployee(yogaClass.getEmployee());
         setLocation(yogaClass.getLocation());
         setOccupied(yogaClass.isOccupied());
     }
