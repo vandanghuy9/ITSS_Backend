@@ -19,11 +19,11 @@ INSERT INTO Memberships(membership_name,
  including_trainer,
  training_class,
  description)
-VALUES ('Membership 1', '12', 500.00, 100, 10, 20, 'Short-term', true, 'Class A', 'Membership 1 description'),
-       ('Membership 2', '24', 600.00, 120, 12, 30, 'Long-term', false, 'Class B', 'Membership 2 description'),
-       ('Membership 3', '36', 700.00, 150, 15, 40, 'Diamond', true, 'Class C', 'Membership 3 description'),
-       ('Membership 4', '48', 800.00, 180, 18, 50, 'Short-term', false, 'Class D', 'Membership 4 description'),
-       ('Membership 5', 'One day', 100.00, 0, 20, 10, 'Short-term', true, 'Class E', 'Membership 5 description');
+VALUES ('Membership 1', '12', 500.00, 100, 10, 20, 'Short-term', true, 'FITNESS-10', 'Membership 1 description'),
+       ('Membership 2', '24', 600.00, 120, 12, 30, 'Long-term', false, 'FITNESS-2', 'Membership 2 description'),
+       ('Membership 3', '36', 700.00, 150, 15, 40, 'Diamond', true, 'YOGA-6', 'Membership 3 description'),
+       ('Membership 4', '48', 800.00, 180, 18, 50, 'Short-term', false, 'YOGA-9', 'Membership 4 description'),
+       ('Membership 5', 'One day', 100.00, 0, 20, 10, 'Short-term', true, 'FITNESS-7', 'Membership 5 description');
 
 INSERT INTO Members(name, age, gender, email, phone_number, occupation, birthday, job, member_type)
 VALUES ('John Doe', 30, 'Male', 'johndoe@example.com', '1234567890', 'Engineer', '1990-01-01', 'Software Developer', 'Classic'),
