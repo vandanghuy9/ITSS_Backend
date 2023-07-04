@@ -12,12 +12,9 @@ public class TrainingHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
     private Date trainingDay;
 
-
     private String trainingTime;
-
 
     private Integer trainerId;
     private Integer memberId;

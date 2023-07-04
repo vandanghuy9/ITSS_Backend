@@ -51,7 +51,7 @@ public class Feedback {
         this.memberId = memberId;
     }
 
-    public String getFeedback_content() {
+   public String getFeedback_content() {
         return feedback_content;
     }
 

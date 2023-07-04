@@ -1,5 +1,6 @@
 package manager.gym.Gym.Manager.entity.staff;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,6 +31,7 @@ public class GymStaff extends Employee{
     }
     private String role;
     private String workingFaculty;
+
 //    @OneToOne(mappedBy = "employee")
 //    private YogaClass yogaClass;
 //

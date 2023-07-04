@@ -10,7 +10,7 @@ public class GymHasFacility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "gym_id", referencedColumnName = "id")
     private YogaClass gymId;
 

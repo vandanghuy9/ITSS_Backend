@@ -1,5 +1,6 @@
 package manager.gym.Gym.Manager.entity.gym;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,8 +18,9 @@ public class YogaClass {
     @Column(name = "id")
     private String id;
     private String name;
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
+
     private GymStaff employee;
     private int maximumNumber;
     private String location;
@@ -84,7 +86,7 @@ public class YogaClass {
     public void setClass(YogaClass yogaClass){
         setMaximumNumber(yogaClass.getMaximumNumber());
         setName(yogaClass.getName());
-        setEmployee(yogaClass.getEmployee());
+//        setEmployee(yogaClass.getEmployee());
         setLocation(yogaClass.getLocation());
         setOccupied(yogaClass.isOccupied());
     }
