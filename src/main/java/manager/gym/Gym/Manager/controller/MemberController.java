@@ -3,6 +3,7 @@ package manager.gym.Gym.Manager.controller;
 import manager.gym.Gym.Manager.entity.Member;
 import manager.gym.Gym.Manager.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,15 +11,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/members")
+@CrossOrigin(origins = "http://localhost:3000")
 public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping("/member")
-    public ResponseEntity<List<Member>> getAllMembers() {
+    @Autowired
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
-        return new ResponseEntity<List<Member>>( memberService.getAllMembers(), HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<Member>> getAllMembers() {
+        return memberService.getAllMembers();
     }
 
     @GetMapping("/{memberId}")

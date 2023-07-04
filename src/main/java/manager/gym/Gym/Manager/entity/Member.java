@@ -1,22 +1,18 @@
 package manager.gym.Gym.Manager.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Data
-@AllArgsConstructor // constructor using all fields as para
-@NoArgsConstructor // constructor using no field as para
-
+@Table(name = "members")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int memberId;
+    private Integer memberId;
     private String name;
     private int age;
     private String gender;
@@ -27,9 +23,8 @@ public class Member {
     private String job;
     private String memberType;
 
-//    @OneToMany(mappedBy = "member")
-//    private List<TrainingHistory> trainingHistories;
-//
+    @OneToMany(mappedBy = "member")
+    private List<TrainingHistory> trainingHistories;
 
     // Constructors, getters, setters...
 
@@ -114,11 +109,11 @@ public class Member {
         this.memberType = memberType;
     }
 
-//    public List<TrainingHistory> getTrainingHistories() {
-//        return trainingHistories;
-//    }
-//
-//    public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
-//        this.trainingHistories = trainingHistories;
-//    }
+    // public List<TrainingHistory> getTrainingHistories() {
+    // return trainingHistories;
+    // }
+    //
+    // public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
+    // this.trainingHistories = trainingHistories;
+    // }
 }

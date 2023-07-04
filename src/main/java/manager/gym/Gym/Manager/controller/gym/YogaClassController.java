@@ -1,6 +1,8 @@
 package manager.gym.Gym.Manager.controller.gym;
 
 import manager.gym.Gym.Manager.entity.gym.YogaClass;
+import manager.gym.Gym.Manager.entity.staff.GymStaff;
+import manager.gym.Gym.Manager.service.GymStaffService;
 import manager.gym.Gym.Manager.service.YogaClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +13,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@CrossOrigin(origins = "http://localhost:3000")
 public class YogaClassController {
     @Autowired
     private YogaClassService yogaClassService;
+    @Autowired
+    private GymStaffService gymStaffService;
 
     @GetMapping("/yogaclass")
     public ResponseEntity<List<YogaClass>> getAll(){
@@ -22,13 +27,30 @@ public class YogaClassController {
 
     @PostMapping("/yogaclass/add")
     public ResponseEntity<String> save(@RequestBody YogaClass yogaClass){
+
+        GymStaff foundGymStaff = gymStaffService.getById(yogaClass.getEmployee().getId()).get(0);
+        if (foundGymStaff != null){
+            yogaClass.setEmployee(foundGymStaff);
+        }
         return new ResponseEntity<String>(yogaClassService.save(yogaClass), HttpStatus.OK);
     }
 
-    @PostMapping("/yogaclass/update?id={id}&maximum={maximum}")
+    @PostMapping("/yogaclass/update")
     public ResponseEntity<Integer> updateByIdAndName(@RequestParam(name = "id") String id, @RequestParam(name = "maximum") int maximumNumber){
         return new ResponseEntity<Integer>(yogaClassService.updateMaximumNumberByID(id,maximumNumber),HttpStatus.OK);
-
     }
 
+    @DeleteMapping("/yogaclass/delete")  //dang bug: xoa mat ca nhan vien
+    public ResponseEntity<Integer> deleteById(@RequestParam(name = "id") String id){
+        return new ResponseEntity<Integer>(yogaClassService.deleteByID(id),HttpStatus.OK);
+    }
+
+    @PutMapping("/yogaclass/updateclass/{id}")
+    public  ResponseEntity<Integer> updateClass(@RequestBody YogaClass yogaClass, @PathVariable String id){
+        GymStaff foundGymStaff = gymStaffService.getById(yogaClass.getEmployee().getId()).get(0);
+        if (foundGymStaff != null){
+            yogaClass.setEmployee(foundGymStaff);
+        }
+        return new ResponseEntity<Integer>(yogaClassService.updateByID(id,yogaClass),HttpStatus.OK);
+    }
 }
