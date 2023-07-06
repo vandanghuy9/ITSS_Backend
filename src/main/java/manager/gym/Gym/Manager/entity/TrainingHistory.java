@@ -2,6 +2,7 @@ package manager.gym.Gym.Manager.entity;
 
 import jakarta.persistence.*;
 import lombok.ToString;
+import manager.gym.Gym.Manager.entity.staff.Trainer;
 
 import java.util.Date;
 
@@ -16,8 +17,12 @@ public class TrainingHistory {
 
     private String trainingTime;
 
-    private Integer trainerId;
-    private Integer memberId;
+    @ManyToOne
+    @JoinColumn(name = "trainer_id")
+    private Trainer trainerId;
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member memberId;
 
 //    @ManyToOne
 //    @JoinColumn(name = "member_id",nullable = false)
@@ -26,7 +31,7 @@ public class TrainingHistory {
     public TrainingHistory() {
     }
 
-    public TrainingHistory(Integer memberId, Date trainingDay, String trainingTime, Integer trainerId) {
+    public TrainingHistory(Member memberId, Date trainingDay, String trainingTime, Trainer trainerId) {
           this.memberId = memberId;
         this.trainingDay = trainingDay;
         this.trainingTime = trainingTime;
@@ -42,11 +47,11 @@ public class TrainingHistory {
         this.id = id;
     }
 
-    public Integer getMemberId() {
+    public Member getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(Integer memberId) {
+    public void setMemberId(Member memberId) {
         this.memberId = memberId;
     }
 
@@ -66,11 +71,11 @@ public class TrainingHistory {
         this.trainingTime = trainingTime;
     }
 
-    public Integer getTrainerId() {
+    public Trainer getTrainerId() {
         return trainerId;
     }
 
-    public void setTrainerId(Integer trainerId) {
+    public void setTrainerId(Trainer trainerId) {
         this.trainerId = trainerId;
     }
 

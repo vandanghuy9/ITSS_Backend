@@ -35,18 +35,7 @@ VALUES ('John Doe', 30, 'Male', 'johndoe@example.com', '1234567890', 'Engineer',
        ('Eve Black', 29, 'Female', 'eveblack@example.com', '6666666666', 'Artist', '1992-07-25', 'Painter', 'Diamond'),
        ('Frank White', 31, 'Male', 'frankwhite@example.com', '7777777777', 'Engineer', '1991-12-05', 'Mechanical Engineer', 'Classic');
 
-INSERT INTO Training_History(Member_id, training_day, training_time, trainer_id)
-VALUES
-    (1, '2022-01-01', '10:00', 1),
-    (1, '2022-01-02', '14:00', NULL),
-    (2, '2022-01-03', '09:30', 2),
-    (2, '2022-01-04', '16:00', NULL),
-    (3, '2022-01-05', '11:00', 3),
-    (3, '2022-01-06', '15:30', NULL),
-    (4, '2022-01-07', '08:00', 4),
-    (4, '2022-01-08', '17:00', NULL),
-    (5, '2022-01-09', '13:30', 5),
-    (5, '2022-01-10', '10:30', NULL);
+
 
 INSERT INTO facility (facility_Name, type, date_Of_Purchase, warranty_Date, origin,status,quantity)
 VALUES
@@ -187,3 +176,15 @@ VALUES ('FITNESS-10', 1, 10),
        ('YOGA-4', 18, 80),
        ('YOGA-6', 19,90 ),
        ('YOGA-9',20 ,100);
+INSERT INTO Training_History(Member_id, training_day, training_time, trainer_id)
+VALUES
+    (1, '2022-01-01', '10:00', 1),
+    (1, '2022-01-02', '14:00', 3),
+    (2, '2022-01-03', '09:30', 2),
+    (2, '2022-01-04', '16:00', 4),
+    (3, '2022-01-05', '11:00', 3),
+    (3, '2022-01-06', '15:30', 5),
+    (4, '2022-01-07', '08:00', 4),
+    (4, '2022-01-08', '17:00', 7),
+    (5, '2022-01-09', '13:30', 5),
+    (5, '2022-01-10', '10:30', 7);

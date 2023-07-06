@@ -6,6 +6,7 @@ import manager.gym.Gym.Manager.service.GymStaffService;
 import manager.gym.Gym.Manager.service.YogaClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +18,6 @@ import java.util.List;
 public class YogaClassController {
     @Autowired
     private YogaClassService yogaClassService;
-    @Autowired
-    private GymStaffService gymStaffService;
 
     @GetMapping("/yogaclass")
     public ResponseEntity<List<YogaClass>> getAll(){
@@ -28,10 +27,6 @@ public class YogaClassController {
     @PostMapping("/yogaclass/add")
     public ResponseEntity<String> save(@RequestBody YogaClass yogaClass){
 
-        GymStaff foundGymStaff = gymStaffService.getById(yogaClass.getEmployee().getId()).get(0);
-        if (foundGymStaff != null){
-            yogaClass.setEmployee(foundGymStaff);
-        }
         return new ResponseEntity<String>(yogaClassService.save(yogaClass), HttpStatus.OK);
     }
 
@@ -45,12 +40,8 @@ public class YogaClassController {
         return new ResponseEntity<Integer>(yogaClassService.deleteByID(id),HttpStatus.OK);
     }
 
-    @PutMapping("/yogaclass/updateclass/{id}")
+    @PutMapping("/yogaclass/update/{id}")
     public  ResponseEntity<Integer> updateClass(@RequestBody YogaClass yogaClass, @PathVariable String id){
-        GymStaff foundGymStaff = gymStaffService.getById(yogaClass.getEmployee().getId()).get(0);
-        if (foundGymStaff != null){
-            yogaClass.setEmployee(foundGymStaff);
-        }
         return new ResponseEntity<Integer>(yogaClassService.updateByID(id,yogaClass),HttpStatus.OK);
     }
 }

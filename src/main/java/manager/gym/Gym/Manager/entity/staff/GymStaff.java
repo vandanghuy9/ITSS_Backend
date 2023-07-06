@@ -32,16 +32,17 @@ public class GymStaff extends Employee{
     private String role;
     private String workingFaculty;
 
-//    @OneToOne(mappedBy = "employee")
-//    private YogaClass yogaClass;
-//
-//    public YogaClass getYogaClass() {
-//        return yogaClass;
-//    }
-//
-//    public void setYogaClass(YogaClass yogaClass) {
-//        this.yogaClass = yogaClass;
-//    }
+    @OneToOne(mappedBy = "employee")
+    @JsonIgnore
+    private YogaClass yogaClass;
+
+    public YogaClass getYogaClass() {
+        return yogaClass;
+    }
+
+    public void setYogaClass(YogaClass yogaClass) {
+        this.yogaClass = yogaClass;
+    }
 
     public String getWorkingFaculty() {
         return workingFaculty;

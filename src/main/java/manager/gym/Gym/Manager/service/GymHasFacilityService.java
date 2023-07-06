@@ -1,9 +1,6 @@
 package manager.gym.Gym.Manager.service;
 
-import manager.gym.Gym.Manager.entity.Facility;
-import manager.gym.Gym.Manager.entity.Feedback;
-import manager.gym.Gym.Manager.entity.GymHasFacility;
-import manager.gym.Gym.Manager.entity.Member;
+import manager.gym.Gym.Manager.entity.*;
 import manager.gym.Gym.Manager.entity.gym.YogaClass;
 import manager.gym.Gym.Manager.entity.staff.GymStaff;
 import manager.gym.Gym.Manager.repository.FacilityRepository;
@@ -30,39 +27,47 @@ public class GymHasFacilityService {
         return gymHasFacilityRepository.findAll();
     }
 
-    public GymHasFacility getGymHasFacilityById(Integer id){
-        return gymHasFacilityRepository.findById(id)
-                .orElse(null);
+    public List<GymHasFacility> getGymClass(String id){
+        return gymHasFacilityRepository.findClassById(id);
     }
 
-//    public Feedback createFeedback(Feedback feedback){
-//        int memberId = feedback.getMemberId().getMemberId();
-//        int gymStaffId = feedback.getGymStaffId().getId();
-//
-//        Member foundMember = memberRepository.findById(memberId).orElse(null);
-//        GymStaff foundGymStaff = gymStaffRepository.findByid(gymStaffId).get(0);
-//
-//        feedback.setMemberId(foundMember);
-//        feedback.setGymStaffId(foundGymStaff);
-//        return feedbackRepository.save(feedback);
-//    }
-
-    public GymHasFacility createGymHasFacility(GymHasFacility gymHasFacility){
-        String gymId = gymHasFacility.getGymId().getId();
-        Integer facilityId = gymHasFacility.getFacilityId().getId();
-
-        YogaClass foundclass = yogaClassRepository.findById(gymId).orElse(null);
-        Facility foundfacility = facilityRepository.findById(facilityId).orElse(null);
-
-        gymHasFacility.setGymId(foundclass);
-        gymHasFacility.setFacilityId(foundfacility);
-        return gymHasFacilityRepository.save(gymHasFacility);
+    public List<GymHasFacility> getFacility(int id){
+        return gymHasFacilityRepository.findFacilityById(id);
     }
-    public GymHasFacility updateGymHasFacility(Integer id, GymHasFacility gymHasFacility){
-        gymHasFacility.setId(id);
-        return gymHasFacilityRepository.save(gymHasFacility);
+
+    public GymHasFacility createGymHasFacility(GymHasFacility gymHasFacility) {
+        String gymId = gymHasFacility.getGymClass().getId();
+        Integer facilityId = gymHasFacility.getFacility().getId();
+        GymHasFacilityKey key = new GymHasFacilityKey();
+        YogaClass foundClass = yogaClassRepository.findById(gymId).orElse(null);
+        Facility foundFacility = facilityRepository.findById(facilityId).orElse(null);
+        if (isValid(foundClass, foundFacility)) {
+            gymHasFacility.setGymClass(foundClass);
+            gymHasFacility.setFacility(foundFacility);
+            gymHasFacility.setId(key);
+            return gymHasFacilityRepository.save(gymHasFacility);
+        }
+        return null;
     }
-    public void deleteGymHasFacility(Integer id){
-        gymHasFacilityRepository.deleteById(id);
+    public int updateGymHasFacility( GymHasFacility gymHasFacility){
+        List<GymHasFacility> foundList = gymHasFacilityRepository.findById(gymHasFacility.getFacility().getId(),gymHasFacility.getGymClass().getId());
+        if (foundList.size() > 0){
+            GymHasFacility foundRecord = foundList.get(0);
+            foundRecord.setQuantity(gymHasFacility.getQuantity());
+            GymHasFacility success = gymHasFacilityRepository.save(foundRecord);
+            return 1;
+        }
+        return 0;
+    }
+    public int deleteGymHasFacility(Integer id, String gym){
+        List<GymHasFacility> foundList = gymHasFacilityRepository.findById(id,gym);
+        if (foundList.size()>0) {
+             gymHasFacilityRepository.delete(foundList.get(0));
+             return 1;
+        }
+        return 0;
+    }
+    private boolean isValid(YogaClass yogaClass, Facility facility){
+        return (yogaClass != null && facility != null);
     }
 }

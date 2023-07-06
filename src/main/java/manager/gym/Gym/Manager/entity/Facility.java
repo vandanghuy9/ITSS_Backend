@@ -1,14 +1,15 @@
 package manager.gym.Gym.Manager.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import manager.gym.Gym.Manager.entity.gym.YogaClass;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
@@ -111,5 +112,18 @@ public class Facility {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+
+
+    @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<GymHasFacility> gymClass;
+    public List<GymHasFacility> getGymClass() {
+        return gymClass;
+    }
+
+    public void setGymClass(List<GymHasFacility> gymClass) {
+        this.gymClass = gymClass;
     }
 }

@@ -12,6 +12,7 @@ import java.util.List;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "member_id")
     private Integer memberId;
     private String name;
     private int age;
@@ -23,7 +24,7 @@ public class Member {
     private String job;
     private String memberType;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "memberId")
     private List<TrainingHistory> trainingHistories;
 
     // Constructors, getters, setters...

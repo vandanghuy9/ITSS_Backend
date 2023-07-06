@@ -4,8 +4,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import manager.gym.Gym.Manager.entity.TrainingHistory;
 
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor // constructor using all fields as para
@@ -32,6 +35,17 @@ public class Trainer extends Employee{
     public void setTrainerType(String trainerType) {
         this.trainerType = trainerType;
     }
+
+    public List<TrainingHistory> getTrainingHistoryList() {
+        return trainingHistoryList;
+    }
+
+    public void setTrainingHistoryList(List<TrainingHistory> trainingHistoryList) {
+        this.trainingHistoryList = trainingHistoryList;
+    }
+
+    @OneToMany (mappedBy = "trainerId")
+    private List<TrainingHistory> trainingHistoryList;
 
     public Trainer(String name, Date dob, String workingFaculty, String phoneNum, String citizenIdentityID, Date startDate, Date finishContractDate, String trainerType, String address) {
         super(name, dob, phoneNum, citizenIdentityID, startDate, finishContractDate, address);

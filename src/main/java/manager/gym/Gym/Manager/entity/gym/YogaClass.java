@@ -1,18 +1,25 @@
 package manager.gym.Gym.Manager.entity.gym;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import manager.gym.Gym.Manager.entity.Facility;
+import manager.gym.Gym.Manager.entity.GymHasFacility;
 import manager.gym.Gym.Manager.entity.staff.Employee;
 import manager.gym.Gym.Manager.entity.staff.GymStaff;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Entity
 @Data
 @AllArgsConstructor // constructor using all fields as para
 @NoArgsConstructor // constructor using no field as para
-
+@Table(name = "YOGA_CLASS")
 public class YogaClass {
     @Id
     @Column(name = "id")
@@ -20,7 +27,7 @@ public class YogaClass {
     private String name;
     @OneToOne (cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", referencedColumnName = "id")
-
+//    @JsonBackReference
     private GymStaff employee;
     private int maximumNumber;
     private String location;
@@ -33,7 +40,6 @@ public class YogaClass {
     public void setName(String name) {
         this.name = name;
     }
-
     public GymStaff getEmployee() {
         return employee;
     }
@@ -68,7 +74,7 @@ public class YogaClass {
 
     public YogaClass(String name, Employee employee, int maximumNumber, String id, boolean isOccupied, String location) {
         this.name = name;
-//        this.employee = (GymStaff) employee;
+        this.employee = (GymStaff) employee;
         this.maximumNumber = maximumNumber;
         this.isOccupied = isOccupied;
         this.location = location;
@@ -86,8 +92,21 @@ public class YogaClass {
     public void setClass(YogaClass yogaClass){
         setMaximumNumber(yogaClass.getMaximumNumber());
         setName(yogaClass.getName());
-//        setEmployee(yogaClass.getEmployee());
+        setEmployee(yogaClass.getEmployee());
         setLocation(yogaClass.getLocation());
         setOccupied(yogaClass.isOccupied());
+    }
+
+
+    @OneToMany(mappedBy = "gymClass", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<GymHasFacility> facilities;
+
+    public List<GymHasFacility> getFacilities() {
+        return facilities;
+    }
+
+    public void setFacilities(List<GymHasFacility> facilities) {
+        this.facilities = facilities;
     }
 }
