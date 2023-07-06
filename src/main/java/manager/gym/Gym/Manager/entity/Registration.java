@@ -16,10 +16,10 @@ public class Registration {
     private Integer registrationId;
 
     @ManyToOne
-    @JoinColumn(name = "member_id", referencedColumnName = "member_id")
+    @JoinColumn(name = "member_Id", referencedColumnName = "member_Id")
     private Member memberId;
     @ManyToOne
-    @JoinColumn(name = "membership_id", referencedColumnName = "membership_id")
+    @JoinColumn(name = "membership_Id", referencedColumnName = "membership_Id")
     private Membership membershipId;
     private Date registrationDate;
     private String registrationType;

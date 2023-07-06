@@ -1,6 +1,8 @@
 package manager.gym.Gym.Manager.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -13,7 +15,7 @@ public class Member {
     @Column(name = "member_id")
     private Integer memberId;
     private String name;
-    private Integer age;
+    private int age;
     private String gender;
     private String email;
     private String phoneNumber;
@@ -22,18 +24,17 @@ public class Member {
     private String job;
     private String memberType;
 
-//    @OneToMany(cascade = CascadeType.ALL,mappedBy = "member")
-//    private List<TrainingHistory> trainingHistories;
-
+    @OneToMany(mappedBy = "memberId")
+    private List<TrainingHistory> trainingHistories;
 
     // Constructors, getters, setters...
 
     // Add getters and setters for the modified property names
-    public Integer getMemberId() {
+    public int getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(Integer memberId) {
+    public void setMemberId(int memberId) {
         this.memberId = memberId;
     }
 
@@ -45,11 +46,11 @@ public class Member {
         this.name = name;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
@@ -109,11 +110,11 @@ public class Member {
         this.memberType = memberType;
     }
 
-//    public List<TrainingHistory> getTrainingHistories() {
-//        return trainingHistories;
-//    }
-//
-//    public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
-//        this.trainingHistories = trainingHistories;
-//    }
+    // public List<TrainingHistory> getTrainingHistories() {
+    // return trainingHistories;
+    // }
+    //
+    // public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
+    // this.trainingHistories = trainingHistories;
+    // }
 }

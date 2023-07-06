@@ -1,6 +1,8 @@
 package manager.gym.Gym.Manager.service;
 
 import manager.gym.Gym.Manager.entity.gym.YogaClass;
+import manager.gym.Gym.Manager.entity.staff.GymStaff;
+import manager.gym.Gym.Manager.repository.GymStaffRepository;
 import manager.gym.Gym.Manager.repository.gym.YogaClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,8 @@ import java.util.List;
 public class YogaClassService implements IYogaClassService {
     @Autowired
     private YogaClassRepository yogaClassRepository;
+    @Autowired
+    private GymStaffRepository gymStaffRepository;
     @Override
     public List<YogaClass> getAll() {
         return yogaClassRepository.findAll();
@@ -28,8 +32,10 @@ public class YogaClassService implements IYogaClassService {
 
     @Override
     public String save(YogaClass yogaClass) {
+        GymStaff foundStaff = gymStaffRepository.findByid(yogaClass.getEmployee().getId()).get(0);
+        yogaClass.setEmployee(foundStaff);
         YogaClass savedYogaClass = yogaClassRepository.save(yogaClass);
-        return savedYogaClass.getId();
+        return (savedYogaClass.getId()+" created");
     }
 
     @Override
@@ -56,11 +62,17 @@ public class YogaClassService implements IYogaClassService {
         return 0;
     }
     public int updateByID(String id, YogaClass yogaClass) {
-        YogaClass foundYogaClass = yogaClassRepository.findClassById(id).get(0);
+
+
+        YogaClass foundYogaClass = this.findClass(id);
         if (foundYogaClass != null){
-            foundYogaClass.setClass(yogaClass);
-            YogaClass updated = yogaClassRepository.save(foundYogaClass);
-            return updated.getEmployee().getId();
+            GymStaff foundStaff = gymStaffRepository.findByid(yogaClass.getEmployee().getId()).get(0);
+            if (foundStaff!= null) {
+                yogaClass.setEmployee(foundStaff);
+                foundYogaClass.setClass(yogaClass);
+                YogaClass updated = yogaClassRepository.save(foundYogaClass);
+                return updated.getEmployee().getId();
+            }
         }
         return 0;
     }
@@ -71,12 +83,22 @@ public class YogaClassService implements IYogaClassService {
     }
 
     public int deleteByID(String id){
-        YogaClass foundYogaClass = getById(id).get(0);
+        YogaClass foundYogaClass = findClass(id);
         if (foundYogaClass != null){
             yogaClassRepository.delete(foundYogaClass);
             return 1;
         }
         return 0;
     }
+
+    private YogaClass findClass(String id){
+       List<YogaClass> found = yogaClassRepository.findClassById(id);
+       if (found.size() > 0){
+           return found.get(0);
+       }
+       return null;
+    }
+
+
 
 }

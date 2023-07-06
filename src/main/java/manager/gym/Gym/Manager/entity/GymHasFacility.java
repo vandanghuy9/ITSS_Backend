@@ -1,66 +1,78 @@
 package manager.gym.Gym.Manager.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import manager.gym.Gym.Manager.entity.gym.YogaClass;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
-@Table(name = "gym_has_facility")
 public class GymHasFacility {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    @EmbeddedId
+    @GeneratedValue
+    private GymHasFacilityKey id;
+
+    public GymHasFacilityKey getId() {
+        return id;
+    }
+
+    public void setId(GymHasFacilityKey id) {
+        this.id = id;
+    }
 
     @ManyToOne
-    @JoinColumn(name = "gym_id", referencedColumnName = "id")
-    private YogaClass gymId;
-
+    @MapsId("gymId")
+//    @JsonBackReference
+    @JoinColumn(name = "Gym_id")
+//    @JsonBackReference
+    private YogaClass gymClass;
     @ManyToOne
-    @JoinColumn(name = "facility_id", referencedColumnName = "id")
-    private Facility facilityId;
+    @MapsId("facilityId")
+//    @JsonBackReference
+    @JoinColumn(name = "Facility_id")
+//    @JsonBackReference
+    private  Facility facility;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    public YogaClass getGymClass() {
+        return gymClass;
+    }
 
-    public GymHasFacility(){
+    public void setGymClass(YogaClass gymClass) {
+        this.gymClass = gymClass;
+    }
 
-    };
-
-    public GymHasFacility(Integer id, YogaClass gymId, Facility facilityId, Integer quantity) {
-        Id = id;
-        this.gymId = gymId;
-        this.facilityId = facilityId;
+    public GymHasFacility(GymHasFacilityKey id, YogaClass gymClass, Facility facility, int quantity) {
+//        this.id = id;
+        this.gymClass = gymClass;
+        this.facility = facility;
         this.quantity = quantity;
     }
+    public GymHasFacility(){
 
-    public Integer getId() {
-        return Id;
     }
 
-    public void setId(Integer id) {
-        Id = id;
+    public Facility getFacility() {
+        return facility;
     }
 
-    public YogaClass getGymId() {
-        return gymId;
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 
-    public void setGymId(YogaClass gymId) {
-        this.gymId = gymId;
-    }
-
-    public Facility getFacilityId() {
-        return facilityId;
-    }
-
-    public void setFacilityId(Facility facilityId) {
-        this.facilityId = facilityId;
-    }
-
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+//    public GymHasFacilityKey getId() {
+//        return id;
+//    }
+//
+//    public void setId(GymHasFacilityKey id) {
+//        this.id = id;
+//    }
+
+    private int quantity;
 }

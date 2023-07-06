@@ -21,7 +21,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public int updateByID(@PathVariable int id, @RequestBody Facility facility) {
-        Facility foundFacility = getById(id).get(0);
+        Facility foundFacility = getFacility(id);
         if (foundFacility!= null){
             foundFacility.setFacility(facility);
             facilityRepository.save(foundFacility);
@@ -32,7 +32,7 @@ public class FacilityService implements IFacilityService {
 
     @Override
     public int deleteByID(int id) {
-        Facility foundFacility = facilityRepository.findByid(id).get(0);
+        Facility foundFacility = this.getFacility(id);
         if (foundFacility != null) {
             facilityRepository.deleteById(id);
             return 1;
@@ -50,6 +50,13 @@ public class FacilityService implements IFacilityService {
         return facilityRepository.findByid(id);
     }
 
+    public Facility getFacility(int id){
+        List<Facility> found= facilityRepository.findByid(id);
+        if (found.size()>0){
+            return found.get(0);
+        }
+        return  null;
+    }
 
 
 }

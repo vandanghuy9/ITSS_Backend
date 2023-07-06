@@ -13,12 +13,8 @@ import java.util.Optional;
 
 @Service
 public class MemberService {
-    private final MemberRepository memberRepository;
-
     @Autowired
-    public MemberService(MemberRepository memberRepository) {
-        this.memberRepository = memberRepository;
-    }
+    private MemberRepository memberRepository;
 
     public ResponseEntity<List<Member>> getAllMembers() {
         List<Member> members = memberRepository.findAll();
