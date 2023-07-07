@@ -1,9 +1,11 @@
 package manager.gym.Gym.Manager.entity.staff;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import manager.gym.Gym.Manager.entity.Registration;
 import manager.gym.Gym.Manager.entity.TrainingHistory;
 
 import java.util.Date;
@@ -44,7 +46,8 @@ public class Trainer extends Employee{
         this.trainingHistoryList = trainingHistoryList;
     }
 
-    @OneToMany (mappedBy = "trainerId")
+    @OneToMany (mappedBy = "trainerId", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TrainingHistory> trainingHistoryList;
 
     public Trainer(String name, Date dob, String workingFaculty, String phoneNum, String citizenIdentityID, Date startDate, Date finishContractDate, String trainerType, String address) {
@@ -62,5 +65,17 @@ public class Trainer extends Employee{
         this.setStartDate(trainer.getStartDate());
         this.setFinishContractDate(trainer.getFinishContractDate());
         this.setTrainerType(trainer.getTrainerType());
+    }
+
+    @OneToMany (mappedBy = "trainerId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Registration> registrations;
+
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
     }
 }
