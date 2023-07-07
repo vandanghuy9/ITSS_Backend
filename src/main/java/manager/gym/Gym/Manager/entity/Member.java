@@ -1,5 +1,6 @@
 package manager.gym.Gym.Manager.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,19 +25,9 @@ public class Member {
     private String job;
     private String memberType;
 
-    @OneToMany(mappedBy = "memberId")
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<TrainingHistory> trainingHistories;
-
-    // Constructors, getters, setters...
-
-    // Add getters and setters for the modified property names
-    public int getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
 
     public String getName() {
         return name;
@@ -110,11 +101,43 @@ public class Member {
         this.memberType = memberType;
     }
 
-    // public List<TrainingHistory> getTrainingHistories() {
-    // return trainingHistories;
-    // }
-    //
-    // public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
-    // this.trainingHistories = trainingHistories;
-    // }
+     public List<TrainingHistory> getTrainingHistories() {
+     return trainingHistories;
+     }
+
+     public void setTrainingHistories(List<TrainingHistory> trainingHistories) {
+     this.trainingHistories = trainingHistories;
+     }
+
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Feedback> feedbacks;
+
+    public void setMemberId(Integer memberId) {
+        this.memberId = memberId;
+    }
+
+    public Integer getMemberId() {
+        return memberId;
+    }
+
+    public List<Feedback> getFeedbacks() {
+        return feedbacks;
+    }
+
+    public void setFeedbacks(List<Feedback> feedbacks) {
+        this.feedbacks = feedbacks;
+    }
+
+    @OneToMany(mappedBy = "memberId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Registration> registrations;
+
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
+    }
 }

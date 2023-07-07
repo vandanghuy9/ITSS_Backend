@@ -1,8 +1,10 @@
 package manager.gym.Gym.Manager.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "memberships")
@@ -133,5 +135,17 @@ public class Membership {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @OneToMany(mappedBy = "membershipId", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Registration> registrations;
+
+    public List<Registration> getRegistrations() {
+        return registrations;
+    }
+
+    public void setRegistrations(List<Registration> registrations) {
+        this.registrations = registrations;
     }
 }

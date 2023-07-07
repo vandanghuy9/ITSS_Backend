@@ -87,4 +87,5 @@ public class Registration {
         this.trainerId = trainerId;
     }
 
+
 }

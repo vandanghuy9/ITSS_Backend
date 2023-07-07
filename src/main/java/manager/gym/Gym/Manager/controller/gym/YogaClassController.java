@@ -40,8 +40,8 @@ public class YogaClassController {
         return new ResponseEntity<Integer>(yogaClassService.deleteByID(id),HttpStatus.OK);
     }
 
-    @PutMapping("/yogaclass/update/{id}")
-    public  ResponseEntity<Integer> updateClass(@RequestBody YogaClass yogaClass, @PathVariable String id){
+    @PutMapping("/yogaclass/update")
+    public  ResponseEntity<Integer> updateClass(@RequestBody YogaClass yogaClass, @RequestParam String id){
         return new ResponseEntity<Integer>(yogaClassService.updateByID(id,yogaClass),HttpStatus.OK);
     }
 }
