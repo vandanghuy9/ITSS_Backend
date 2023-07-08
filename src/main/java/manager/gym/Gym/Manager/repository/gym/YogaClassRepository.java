@@ -13,4 +13,5 @@ public interface YogaClassRepository extends JpaRepository<YogaClass,String> {
     @Query(value = "SELECT u FROM YogaClass u WHERE u.id = :id")
     List<YogaClass> findClassById(@Param("id") String id);
 
+
 }

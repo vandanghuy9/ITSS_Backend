@@ -41,7 +41,7 @@ public class GymStaffController {
     }
 
     @DeleteMapping("/gymstaff/delete")
-    public ResponseEntity<Integer> deleteByID(@RequestParam int id) {
+    public ResponseEntity<Integer> deleteByID(@RequestParam(name = "id") int id) {
         return new ResponseEntity<Integer>(gymStaffService.deleteByID(id), HttpStatus.OK);
     }
 
