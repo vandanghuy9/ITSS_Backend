@@ -26,6 +26,11 @@ public class ClassManangerController {
         return new ResponseEntity<List<ClassManager>>(classManagerService.getAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/{classId}")
+    public ResponseEntity<List<ClassManager>> getByClassId(@PathVariable String classId){
+        return new ResponseEntity<List<ClassManager>>(classManagerService.getByClass(classId), HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<ClassManager> save(@RequestBody ClassManager classManager){
 

@@ -34,6 +34,10 @@ public class ClassManagerService {
         return classManagerRepository.save(classManager);
     }
 
+    public List<ClassManager> getByClass(String classId){
+        return classManagerRepository.findById(classId);
+    }
+
     public int update(ClassManager classManager){
         String yogaClass = classManager.getYogaClass().getId();
         int manager_id = classManager.getGymStaff().getId();
