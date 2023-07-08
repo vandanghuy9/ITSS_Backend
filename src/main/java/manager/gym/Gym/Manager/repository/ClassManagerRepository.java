@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ClassManagerRepository extends JpaRepository<ClassManager,Integer> {
-    @Query(value = "SELECT u FROM ClassManager u WHERE u.gymStaff.id = :id AND u.yogaClass.id = :class")
-    List<ClassManager> findById(@Param("class") String yogaclass, @Param("id") int id );
+    @Query(value = "SELECT u FROM ClassManager u WHERE u.yogaClass.id = :class")
+    List<ClassManager> findById(@Param("class") String yogaclass);
 }

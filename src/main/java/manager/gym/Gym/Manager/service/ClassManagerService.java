@@ -37,13 +37,16 @@ public class ClassManagerService {
     public int update(ClassManager classManager){
         String yogaClass = classManager.getYogaClass().getId();
         int manager_id = classManager.getGymStaff().getId();
-        List<ClassManager> found = classManagerRepository.findById(yogaClass,manager_id);
+
+        List<ClassManager> found = classManagerRepository.findById(yogaClass);
         if (found.size() > 0) {
             ClassManager foundResult = found.get(0);
-            foundResult.setYogaClass(classManager.getYogaClass());
-            foundResult.setGymStaff(classManager.getGymStaff());
-            classManagerRepository.save(foundResult);
-            return 1;
+            GymStaff foundStaff = gymStaffRepository.findByid(manager_id).get(0);
+            if (foundStaff != null){
+                foundResult.setGymStaff(foundStaff);
+                classManagerRepository.save(foundResult);
+                return 1;
+            }
         }
         return 0;
     }
