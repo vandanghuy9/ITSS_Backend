@@ -13,8 +13,6 @@ import java.util.List;
 public class YogaClassService implements IYogaClassService {
     @Autowired
     private YogaClassRepository yogaClassRepository;
-    @Autowired
-    private GymStaffRepository gymStaffRepository;
     @Override
     public List<YogaClass> getAll() {
         return yogaClassRepository.findAll();
@@ -32,8 +30,6 @@ public class YogaClassService implements IYogaClassService {
 
     @Override
     public String save(YogaClass yogaClass) {
-        GymStaff foundStaff = gymStaffRepository.findByid(yogaClass.getEmployee().getId()).get(0);
-        yogaClass.setEmployee(foundStaff);
         YogaClass savedYogaClass = yogaClassRepository.save(yogaClass);
         return (savedYogaClass.getId()+" created");
     }
@@ -66,13 +62,9 @@ public class YogaClassService implements IYogaClassService {
 
         YogaClass foundYogaClass = this.findClass(id);
         if (foundYogaClass != null){
-            GymStaff foundStaff = gymStaffRepository.findByid(yogaClass.getEmployee().getId()).get(0);
-            if (foundStaff!= null) {
-                yogaClass.setEmployee(foundStaff);
                 foundYogaClass.setClass(yogaClass);
                 YogaClass updated = yogaClassRepository.save(foundYogaClass);
-                return updated.getEmployee().getId();
-            }
+                return 1;
         }
         return 0;
     }

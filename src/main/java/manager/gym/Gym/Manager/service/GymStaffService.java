@@ -1,8 +1,10 @@
 package manager.gym.Gym.Manager.service;
 
 import manager.gym.Gym.Manager.entity.Facility;
+import manager.gym.Gym.Manager.entity.gym.YogaClass;
 import manager.gym.Gym.Manager.entity.staff.GymStaff;
 import manager.gym.Gym.Manager.repository.GymStaffRepository;
+import manager.gym.Gym.Manager.repository.gym.YogaClassRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,12 +44,12 @@ public class GymStaffService implements IGymStaffService {
 
     @Override
     public int deleteByID(int id) {
-        GymStaff foundGymStaff = gymStaffRepository.findByid(id).get(0);
-        if (foundGymStaff != null) {
-            gymStaffRepository.deleteById(id);
+
+        List<GymStaff> foundGymStaff = gymStaffRepository.findByid(id);
+        if (foundGymStaff.size() > 0 ) {
+            gymStaffRepository.delete(foundGymStaff.get(0));
             return 1;
         }
-
         return 0;
     }
 }

@@ -125,35 +125,35 @@ VALUES
   ('I had a great experience overall.', 1, 5),
   ('I didn''t receive any assistance.', 1, 3);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('YOGA-1', 'Yoga Class 1', 3, 15, 'D-150', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('YOGA-1', 'Yoga Class 1', 15, 'D-150', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('FITNESS-2', 'Fitness Class 2', 4, 18, 'D-180', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('FITNESS-2', 'Fitness Class 2', 18, 'D-180', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('FITNESS-3', 'Fitness Class 3', 5, 20, 'D-200', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('FITNESS-3', 'Fitness Class 3', 20, 'D-200', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('YOGA-4', 'Yoga Class 4', 6, 22, 'D-220', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('YOGA-4', 'Yoga Class 4', 22, 'D-220', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('FITNESS-5', 'Fitness Class 5', 7, 25, 'D-250', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('FITNESS-5', 'Fitness Class 5', 25, 'D-250', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('YOGA-6', 'Yoga Class 6', 8, 28, 'D-280', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('YOGA-6', 'Yoga Class 6', 28, 'D-280', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('FITNESS-7', 'Fitness Class 7', 9, 30, 'D-300', true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('FITNESS-7', 'Fitness Class 7', 30, 'D-300', true);
 
-INSERT INTO Yoga_Class (id, name, manager_id, maximum_number, location, is_Occupied)
-VALUES ('FITNESS-8', 'Fitness Class 8', 10 ,32 , 'D-320' ,true);
+INSERT INTO Yoga_Class (id, name, maximum_number, location, is_Occupied)
+VALUES ('FITNESS-8', 'Fitness Class 8',32 , 'D-320' ,true);
 
-INSERT INTO Yoga_Class (id,name ,manager_id,maximum_number ,location,is_Occupied)
-VALUES ('YOGA-9','Yoga Class 9' ,1 ,10 ,'D-100' ,true);
+INSERT INTO Yoga_Class (id,name ,maximum_number ,location,is_Occupied)
+VALUES ('YOGA-9','Yoga Class 9' ,10 ,'D-100' ,true);
 
-INSERT INTO Yoga_Class (id,name ,manager_id,maximum_number ,location,is_Occupied)
-VALUES ('FITNESS-10','Fitness Class 10' ,2 ,12 ,'D-120' ,true);
+INSERT INTO Yoga_Class (id,name ,maximum_number ,location,is_Occupied)
+VALUES ('FITNESS-10','Fitness Class 10' ,12 ,'D-120' ,true);
 
 INSERT INTO Gym_has_facility (gym_id, facility_id, quantity)
 VALUES ('FITNESS-10', 1, 10),
@@ -188,3 +188,14 @@ VALUES
     (4, '2022-01-08', '17:00', 7),
     (5, '2022-01-09', '13:30', 5),
     (5, '2022-01-10', '10:30', 7);
+INSERT INTO Class_Manager(manager_id, gym_class_id) VALUES
+(3,'YOGA-1'),
+(4,'FITNESS-2'),
+(5,'FITNESS-3'),
+(6,'YOGA-4'),
+(7,'FITNESS-5'),
+(8,'YOGA-6'),
+(9,'FITNESS-7'),
+(10,'FITNESS-8'),
+(1,'YOGA-9'),
+(2,'FITNESS-10');

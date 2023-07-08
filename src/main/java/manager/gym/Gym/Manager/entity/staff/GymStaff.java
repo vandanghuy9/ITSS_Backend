@@ -1,47 +1,45 @@
 package manager.gym.Gym.Manager.entity.staff;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import manager.gym.Gym.Manager.entity.gym.YogaClass;
+import manager.gym.Gym.Manager.entity.ClassManager;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Data
-@AllArgsConstructor // constructor using all fields as para
+ @AllArgsConstructor // constructor using all fields as para
 @NoArgsConstructor // constructor using no field as para
-@Table(name = "GYM_STAFF")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class GymStaff extends Employee{
+public class GymStaff extends Employee {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     public int getId() {
         return id;
     }
 
-
     public void setId(int id) {
         this.id = id;
     }
+
     private String role;
     private String workingFaculty;
 
-    @OneToOne(mappedBy = "employee")
+    @OneToMany(mappedBy = "gymStaff", cascade = CascadeType.ALL)
     @JsonIgnore
-    private YogaClass yogaClass;
+    private List<ClassManager> classManager;
 
-    public YogaClass getYogaClass() {
-        return yogaClass;
+    @JsonIgnore
+    public List<ClassManager> getYogaClass() {
+        return classManager;
     }
-
-    public void setYogaClass(YogaClass yogaClass) {
-        this.yogaClass = yogaClass;
+    @JsonProperty
+    public void setYogaClass(List<ClassManager> classManager) {
+        this.classManager = classManager;
     }
 
     public String getWorkingFaculty() {
@@ -52,9 +50,10 @@ public class GymStaff extends Employee{
         this.workingFaculty = workingFaculty;
     }
 
-    public GymStaff(String name, Date dob, String workingFaculty, String phoneNum, String citizenIdentityID, Date startDate, Date finishContractDate, String role, String address) {
+    public GymStaff(String name, Date dob, String workingFaculty, String phoneNum, String citizenIdentityID,
+            Date startDate, Date finishContractDate, String role, String address) {
         super(name, dob, phoneNum, citizenIdentityID, startDate, finishContractDate, address);
-        this.role =role;
+        this.role = role;
         this.workingFaculty = workingFaculty;
     }
 
@@ -65,9 +64,10 @@ public class GymStaff extends Employee{
     public void setRole(String role) {
         this.role = role;
     }
+
     @Override
-    public void setEmployee(Employee employee){
-        GymStaff gymStaff = (GymStaff)employee;
+    public void setEmployee(Employee employee) {
+        GymStaff gymStaff = (GymStaff) employee;
         this.setName(gymStaff.getName());
         this.setDob(gymStaff.getDob());
         this.setWorkingFaculty(gymStaff.getWorkingFaculty());
@@ -77,6 +77,5 @@ public class GymStaff extends Employee{
         this.setFinishContractDate(gymStaff.getFinishContractDate());
         this.setRole(gymStaff.getRole());
     }
-
 
 }
