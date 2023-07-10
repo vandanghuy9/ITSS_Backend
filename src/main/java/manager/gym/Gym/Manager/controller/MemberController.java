@@ -28,18 +28,18 @@ public class MemberController {
     }
 
     @GetMapping("/{memberId}")
-    public Member getMemberById(@PathVariable Integer memberId) {
-        return memberService.getMemberById(memberId);
+    public ResponseEntity<Member> getMemberById(@PathVariable Integer memberId) {
+        return new ResponseEntity<>(memberService.getMemberById(memberId), HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public Member createMember(@RequestBody Member member) {
-        return memberService.createMember(member);
+    public ResponseEntity<Member> createMember(@RequestBody Member member) {
+        return new ResponseEntity<>(memberService.createMember(member), HttpStatus.CREATED);
     }
 
     @PutMapping("/{memberId}")
-    public Member updateMember(@PathVariable Integer memberId, @RequestBody Member member) {
-        return memberService.updateMember(memberId, member);
+    public ResponseEntity<Member> updateMember(@PathVariable Integer memberId, @RequestBody Member member) {
+        return new ResponseEntity<>(memberService.updateMember(memberId, member),HttpStatus.OK);
     }
 
     @DeleteMapping("/{memberId}")

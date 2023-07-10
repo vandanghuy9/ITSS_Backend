@@ -4,6 +4,8 @@ import manager.gym.Gym.Manager.entity.Feedback;
 import manager.gym.Gym.Manager.service.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.relational.core.sql.In;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,18 +21,18 @@ public class FeedbackController {
     }
 
     @GetMapping
-    public List<Feedback> getAllFeedbacks(){
-        return feedbackService.getAllFeedbacks();
+    public ResponseEntity<List<Feedback>> getAllFeedbacks(){
+        return new ResponseEntity<>(feedbackService.getAllFeedbacks(), HttpStatus.OK);
     }
 
     @GetMapping("/{feedbackId}")
-    public Feedback getFeedbackById(@PathVariable Integer feedbackId){
-        return feedbackService.getFeedbackById(feedbackId);
+    public ResponseEntity<Feedback> getFeedbackById(@PathVariable Integer feedbackId){
+        return new ResponseEntity<>(feedbackService.getFeedbackById(feedbackId), HttpStatus.OK);
     }
 
     @PostMapping
-    public Feedback createFeedback(@RequestBody Feedback feedback){
-        return feedbackService.createFeedback(feedback);
+    public ResponseEntity<Feedback> createFeedback(@RequestBody Feedback feedback){
+        return new ResponseEntity<>(feedbackService.createFeedback(feedback), HttpStatus.OK);
     }
 
     @DeleteMapping("/{feedbackId}")
@@ -39,7 +41,7 @@ public class FeedbackController {
     }
 
     @PutMapping("/{feedbackId}")
-    public Feedback updateFeedback(@PathVariable Integer feedbackId, @RequestBody Feedback feedback){
-        return feedbackService.updateFeedback(feedbackId, feedback);
+    public ResponseEntity<Feedback> updateFeedback(@PathVariable Integer feedbackId, @RequestBody Feedback feedback){
+        return new ResponseEntity<>(feedbackService.updateFeedback(feedbackId, feedback),HttpStatus.CREATED);
     }
 }

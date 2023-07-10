@@ -3,6 +3,8 @@ package manager.gym.Gym.Manager.controller;
 import manager.gym.Gym.Manager.entity.Registration;
 import manager.gym.Gym.Manager.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,18 +21,18 @@ public class RegistrationController {
     }
 
     @GetMapping
-    public List<Registration> getAllRegistrations(){
-        return registrationService.getAllRegistration();
+    public ResponseEntity<List<Registration>> getAllRegistrations(){
+        return new ResponseEntity<>(registrationService.getAllRegistration(), HttpStatus.OK);
     }
 
     @GetMapping("/{registrationId}")
-    public Registration getRegistrationById(@PathVariable Integer registrationId){
-        return registrationService.getRegistrationById(registrationId);
+    public ResponseEntity<Registration> getRegistrationById(@PathVariable Integer registrationId){
+        return  new ResponseEntity<>(registrationService.getRegistrationById(registrationId),HttpStatus.OK);
     }
 
     @PostMapping
-    public Registration createRegistration(@RequestBody Registration registration){
-        return registrationService.createRegistration(registration);
+    public  ResponseEntity<Registration> createRegistration(@RequestBody Registration registration){
+        return new ResponseEntity<>(registrationService.createRegistration(registration),HttpStatus.OK);
     }
 
     @DeleteMapping("/{registrationId}")
@@ -39,7 +41,7 @@ public class RegistrationController {
     }
 
     @PutMapping("/{registrationId}")
-    public Registration updateRegistration(@PathVariable Integer registrationId, @RequestBody Registration registration){
-        return registrationService.updateRegistration(registrationId, registration);
+    public ResponseEntity<Registration> updateRegistration(@PathVariable Integer registrationId, @RequestBody Registration registration){
+        return  new ResponseEntity<>(registrationService.updateRegistration(registrationId, registration),HttpStatus.OK);
     }
 }

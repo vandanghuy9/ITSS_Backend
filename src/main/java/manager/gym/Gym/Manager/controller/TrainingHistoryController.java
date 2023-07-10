@@ -3,6 +3,9 @@ package manager.gym.Gym.Manager.controller;
 import manager.gym.Gym.Manager.entity.TrainingHistory;
 import manager.gym.Gym.Manager.service.TrainingHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,23 +22,23 @@ public class TrainingHistoryController {
     }
 
     @GetMapping
-    public List<TrainingHistory> getAllTrainingHistories() {
-        return trainingHistoryService.getAllTrainingHistories();
+    public ResponseEntity<List<TrainingHistory>> getAllTrainingHistories() {
+        return new ResponseEntity<>(trainingHistoryService.getAllTrainingHistories(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public TrainingHistory getTrainingHistoryById(@PathVariable Integer id) {
-        return trainingHistoryService.getTrainingHistoryById(id);
+    public ResponseEntity<TrainingHistory> getTrainingHistoryById(@PathVariable Integer id) {
+        return new ResponseEntity<>(trainingHistoryService.getTrainingHistoryById(id),HttpStatus.OK);
     }
 
     @PostMapping
-    public TrainingHistory createTrainingHistory(@RequestBody TrainingHistory trainingHistory) {
-        return trainingHistoryService.createTrainingHistory(trainingHistory);
+    public ResponseEntity<TrainingHistory> createTrainingHistory(@RequestBody TrainingHistory trainingHistory) {
+        return new ResponseEntity<>( trainingHistoryService.createTrainingHistory(trainingHistory),HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public TrainingHistory updateTrainingHistory(@PathVariable Integer id, @RequestBody TrainingHistory trainingHistory) {
-        return trainingHistoryService.updateTrainingHistory(id, trainingHistory);
+    public ResponseEntity<TrainingHistory> updateTrainingHistory(@PathVariable Integer id, @RequestBody TrainingHistory trainingHistory) {
+        return new ResponseEntity<>( trainingHistoryService.updateTrainingHistory(id, trainingHistory),HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
